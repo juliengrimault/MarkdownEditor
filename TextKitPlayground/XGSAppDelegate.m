@@ -7,15 +7,18 @@
 //
 
 #import "XGSAppDelegate.h"
+#import "XGSTextViewController.h"
 
 @implementation XGSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.window.rootViewController = self.tabBarController;
+    self.tabBarController.viewControllers = @[[[XGSTextViewController alloc] init]];
     return YES;
 }
 

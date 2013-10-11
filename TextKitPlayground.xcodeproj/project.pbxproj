@@ -19,6 +19,7 @@
 		F99DA5151807F84C00176BE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA4FD1807F84C00176BE7 /* UIKit.framework */; };
 		F99DA51D1807F84C00176BE7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F99DA51B1807F84C00176BE7 /* InfoPlist.strings */; };
 		F99DA51F1807F84C00176BE7 /* TextKitPlaygroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA51E1807F84C00176BE7 /* TextKitPlaygroundTests.m */; };
+		F99DA52A1807F92D00176BE7 /* XGSTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA5291807F92D00176BE7 /* XGSTextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		F99DA51A1807F84C00176BE7 /* TextKitPlaygroundTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TextKitPlaygroundTests-Info.plist"; sourceTree = "<group>"; };
 		F99DA51C1807F84C00176BE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F99DA51E1807F84C00176BE7 /* TextKitPlaygroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextKitPlaygroundTests.m; sourceTree = "<group>"; };
+		F99DA5281807F92D00176BE7 /* XGSTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSTextViewController.h; sourceTree = "<group>"; };
+		F99DA5291807F92D00176BE7 /* XGSTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSTextViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				F99DA5091807F84C00176BE7 /* XGSAppDelegate.m */,
 				F99DA50B1807F84C00176BE7 /* Images.xcassets */,
 				F99DA5001807F84C00176BE7 /* Supporting Files */,
+				F99DA5281807F92D00176BE7 /* XGSTextViewController.h */,
+				F99DA5291807F92D00176BE7 /* XGSTextViewController.m */,
 			);
 			path = TextKitPlayground;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F99DA5061807F84C00176BE7 /* main.m in Sources */,
+				F99DA52A1807F92D00176BE7 /* XGSTextViewController.m in Sources */,
 				F99DA50A1807F84C00176BE7 /* XGSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
