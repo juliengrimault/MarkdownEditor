@@ -20,6 +20,8 @@
 		F99DA51D1807F84C00176BE7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F99DA51B1807F84C00176BE7 /* InfoPlist.strings */; };
 		F99DA51F1807F84C00176BE7 /* TextKitPlaygroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA51E1807F84C00176BE7 /* TextKitPlaygroundTests.m */; };
 		F99DA52A1807F92D00176BE7 /* XGSTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA5291807F92D00176BE7 /* XGSTextViewController.m */; };
+		F99DA52D1808032300176BE7 /* XGSHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA52C1808032300176BE7 /* XGSHighlightTextStorage.m */; };
+		F99DA53018080B0A00176BE7 /* XGSMarkupDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA52F18080B0A00176BE7 /* XGSMarkupDefinition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		F99DA51E1807F84C00176BE7 /* TextKitPlaygroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextKitPlaygroundTests.m; sourceTree = "<group>"; };
 		F99DA5281807F92D00176BE7 /* XGSTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSTextViewController.h; sourceTree = "<group>"; };
 		F99DA5291807F92D00176BE7 /* XGSTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSTextViewController.m; sourceTree = "<group>"; };
+		F99DA52B1808032300176BE7 /* XGSHighlightTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSHighlightTextStorage.h; sourceTree = "<group>"; };
+		F99DA52C1808032300176BE7 /* XGSHighlightTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSHighlightTextStorage.m; sourceTree = "<group>"; };
+		F99DA52E18080B0A00176BE7 /* XGSMarkupDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSMarkupDefinition.h; sourceTree = "<group>"; };
+		F99DA52F18080B0A00176BE7 /* XGSMarkupDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSMarkupDefinition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,10 @@
 				F99DA5001807F84C00176BE7 /* Supporting Files */,
 				F99DA5281807F92D00176BE7 /* XGSTextViewController.h */,
 				F99DA5291807F92D00176BE7 /* XGSTextViewController.m */,
+				F99DA52B1808032300176BE7 /* XGSHighlightTextStorage.h */,
+				F99DA52C1808032300176BE7 /* XGSHighlightTextStorage.m */,
+				F99DA52E18080B0A00176BE7 /* XGSMarkupDefinition.h */,
+				F99DA52F18080B0A00176BE7 /* XGSMarkupDefinition.m */,
 			);
 			path = TextKitPlayground;
 			sourceTree = "<group>";
@@ -245,6 +255,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F99DA52D1808032300176BE7 /* XGSHighlightTextStorage.m in Sources */,
+				F99DA53018080B0A00176BE7 /* XGSMarkupDefinition.m in Sources */,
 				F99DA5061807F84C00176BE7 /* main.m in Sources */,
 				F99DA52A1807F92D00176BE7 /* XGSTextViewController.m in Sources */,
 				F99DA50A1807F84C00176BE7 /* XGSAppDelegate.m in Sources */,
