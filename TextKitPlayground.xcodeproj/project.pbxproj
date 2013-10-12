@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F98DED921808E5CB001478FD /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = F98DED911808E5CB001478FD /* OrderedDictionary.m */; };
+		F98DED951808E7AD001478FD /* UIColor+AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F98DED941808E7AD001478FD /* UIColor+AppColor.m */; };
 		F99DA4FA1807F84C00176BE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA4F91807F84C00176BE7 /* Foundation.framework */; };
 		F99DA4FC1807F84C00176BE7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA4FB1807F84C00176BE7 /* CoreGraphics.framework */; };
 		F99DA4FE1807F84C00176BE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA4FD1807F84C00176BE7 /* UIKit.framework */; };
@@ -36,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F98DED901808E5CB001478FD /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
+		F98DED911808E5CB001478FD /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
+		F98DED931808E7AD001478FD /* UIColor+AppColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColor.h"; sourceTree = "<group>"; };
+		F98DED941808E7AD001478FD /* UIColor+AppColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColor.m"; sourceTree = "<group>"; };
 		F99DA4F61807F84C00176BE7 /* TextKitPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextKitPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99DA4F91807F84C00176BE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F99DA4FB1807F84C00176BE7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +125,8 @@
 		F99DA4FF1807F84C00176BE7 /* TextKitPlayground */ = {
 			isa = PBXGroup;
 			children = (
+				F98DED901808E5CB001478FD /* OrderedDictionary.h */,
+				F98DED911808E5CB001478FD /* OrderedDictionary.m */,
 				F99DA5081807F84C00176BE7 /* XGSAppDelegate.h */,
 				F99DA5091807F84C00176BE7 /* XGSAppDelegate.m */,
 				F99DA50B1807F84C00176BE7 /* Images.xcassets */,
@@ -131,6 +139,8 @@
 				F99DA52F18080B0A00176BE7 /* XGSMarkupDefinition.m */,
 				F9C13A8418085B64005C4D9D /* XGSPreviewViewController.h */,
 				F9C13A8518085B64005C4D9D /* XGSPreviewViewController.m */,
+				F98DED931808E7AD001478FD /* UIColor+AppColor.h */,
+				F98DED941808E7AD001478FD /* UIColor+AppColor.m */,
 			);
 			path = TextKitPlayground;
 			sourceTree = "<group>";
@@ -264,6 +274,8 @@
 				F99DA53018080B0A00176BE7 /* XGSMarkupDefinition.m in Sources */,
 				F99DA5061807F84C00176BE7 /* main.m in Sources */,
 				F99DA52A1807F92D00176BE7 /* XGSTextViewController.m in Sources */,
+				F98DED921808E5CB001478FD /* OrderedDictionary.m in Sources */,
+				F98DED951808E7AD001478FD /* UIColor+AppColor.m in Sources */,
 				F9C13A8618085B64005C4D9D /* XGSPreviewViewController.m in Sources */,
 				F99DA50A1807F84C00176BE7 /* XGSAppDelegate.m in Sources */,
 			);

@@ -17,9 +17,8 @@ typedef NSAttributedString*(^TagProcessorBlockType)(NSAttributedString*, NSTextC
 // keys are the regex for the tags and values are the NSAttributed string style
 @property (nonatomic, strong, readonly) NSDictionary *tagStyles;
 
-// keys are regex for the tags and values are
-@property (nonatomic, strong, readonly) NSDictionary *tagProcessingBlocks;
-
 @property (nonatomic, strong) UIFont *normalFont;
+
+- (NSAttributedString *)parseAttributedString:(NSAttributedString *)input;
 
 @end

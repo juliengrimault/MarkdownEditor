@@ -10,4 +10,8 @@
 
 @interface XGSPreviewViewController : UIViewController
 
+
+@property (strong, nonatomic) NSAttributedString *text;
+
+- (instancetype)initWithText:(NSAttributedString *)text;
 @end

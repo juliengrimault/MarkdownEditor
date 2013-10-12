@@ -19,21 +19,27 @@
 
 @implementation XGSTextViewController
 
+- (id)initWithMarkupProcessor:(XGSMarkupDefinition *)markupProcessor
+{
+    self = [super init];
+    if (self) {
+        _markupProcessor = markupProcessor;
+        self.title = NSLocalizedString(@"Edit", nil);
+    }
+    return self;
+}
+
 - (void)loadView
 {
     self.view = [UIView new];
-    self.view.backgroundColor = [UIColor redColor];
 
     [self setupTextView];
-    [self.view addSubview:self.textView];
-    
     [self setupNavigationBarButton];
 }
 
     - (void)setupTextView
     {
-        XGSMarkupDefinition *markupDef = [XGSMarkupDefinition sharedInstance];
-        self.textStorage = [[XGSHighlightTextStorage alloc] initWithTagStyles:markupDef.tagStyles normalFont:markupDef.normalFont];
+        self.textStorage = [[XGSHighlightTextStorage alloc] initWithTagStyles:self.markupProcessor.tagStyles normalFont:self.markupProcessor.normalFont];
         
         NSLayoutManager *layoutManager = [NSLayoutManager new];
         [self.textStorage addLayoutManager: layoutManager];
@@ -43,8 +49,8 @@
         
         UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero textContainer:textContainer];
         [textView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        textView.backgroundColor = [UIColor purpleColor];
         self.textView = textView;
+        [self.view addSubview:self.textView];
     }
 
     - (void)setupNavigationBarButton
@@ -58,7 +64,8 @@
 
         - (void)renderPreview:(id)sender
         {
-            XGSPreviewViewController *previewVC = [[XGSPreviewViewController alloc] init];
+            NSAttributedString *parsedText = [self.markupProcessor parseAttributedString:self.textStorage];
+            XGSPreviewViewController *previewVC = [[XGSPreviewViewController alloc] initWithText:parsedText];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:previewVC];
             [self presentViewController:nav animated:YES completion:nil];
         }
@@ -67,17 +74,16 @@
 {
     [super viewDidLoad];
     [self setupConstraints];
-    self.textView.text = NSLocalizedString(@"type something here",nil);
+    self.textView.text = NSLocalizedString(@"This is a demo of what you can do:\n1 * on each side of a word will make it *italic*.\n2 * on each side will make it **bold**.\n\nPretty cool no?",nil);
     [self startObservingKeyboardNotifications];
 }
 
     - (void)setupConstraints
     {
-        id topGuide = self.topLayoutGuide;
         id editView = self.textView;
-        NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(editView, topGuide);
+        NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(editView);
         [self.view addConstraints:
-         [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-[editView]-|"
+         [NSLayoutConstraint constraintsWithVisualFormat: @"H:|[editView]|"
                                                  options: 0
                                                  metrics: nil
                                                    views: viewsDictionary]];

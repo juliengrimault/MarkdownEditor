@@ -7,12 +7,17 @@
 //
 
 #import "XGSMarkupDefinition.h"
+#import "OrderedDictionary.h"
 
-NSString* THMarkdownURegexItalic = @"\\*(.+?)\\*"; /* "*xxx*" = xxx in italics */
-NSString* THMarkdownURegexBold = @"\\*\\*(.+?)\\*\\*"; /* "**xxx**" = xxx in bold */
+NSString* THMarkdownURegexItalic = @"\\*([^\\s].+?)\\*"; /* "*xxx*" = xxx in italics */
+NSString* THMarkdownURegexBold = @"\\*\\*([^\\s].+?)\\*\\*"; /* "**xxx**" = xxx in bold */
 
 
 @interface XGSMarkupDefinition()
+
+// keys are regex for the tags and values are - we use an ordered dictionary because the order in which tag
+// processing blocks run is important - a tag recognizing **xxx** must run before a tag recognizing *xxx*
+@property (nonatomic, strong) OrderedDictionary *tagProcessingBlocks;
 
 @property (nonatomic, strong) UIFont *italicFont;
 @property (nonatomic, strong) UIFont *boldFont;
@@ -74,11 +79,15 @@ NSString* THMarkdownURegexBold = @"\\*\\*(.+?)\\*\\*"; /* "**xxx**" = xxx in bol
     _tagStyles =  @{ THMarkdownURegexItalic : @{NSFontAttributeName : _italicFont},
                      THMarkdownURegexBold : @{NSFontAttributeName : _boldFont} };
     
-    _tagProcessingBlocks = @{
-       THMarkdownURegexBold : [self tagProcessorForAttribute:@{NSFontAttributeName : _boldFont}],
-       THMarkdownURegexItalic : [self tagProcessorForAttribute:@{NSFontAttributeName : _italicFont}],
-    };
+    _tagProcessingBlocks = [OrderedDictionary new];
+    [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSFontAttributeName : _boldFont}]
+                                forKey:THMarkdownURegexBold atIndex:0];
+    [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSFontAttributeName : _italicFont}]
+                                forKey:THMarkdownURegexItalic atIndex:1];
 }
+
+
+#pragma mark - Markdown Parsing
 
 - (TagProcessorBlockType)tagProcessorForAttribute:(NSDictionary *)attributes
 {
@@ -96,5 +105,34 @@ NSString* THMarkdownURegexBold = @"\\*\\*(.+?)\\*\\*"; /* "**xxx**" = xxx in bol
     };
 }
 
+- (NSAttributedString *)parseAttributedString:(NSAttributedString *)input
+{
+    NSMutableAttributedString *mutAttrString = [input mutableCopy];
+    
+    [self.tagProcessingBlocks enumerateKeysAndObjectsUsingBlock:^(NSString *pattern, TagProcessorBlockType block, BOOL *stop) {
+         [self parsePattern:pattern processingBlock:block input:mutAttrString];
+     }];
+    return [mutAttrString copy];
+}
+
+    - (void)parsePattern:(NSString *)pattern processingBlock:(TagProcessorBlockType)block input:(NSMutableAttributedString *)input
+    {
+        NSRegularExpression* regEx = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
+        NSAttributedString* processedString = [input copy];
+        
+        __block NSUInteger offset = 0;
+        NSRange range = NSMakeRange(0, processedString.length);
+        [regEx enumerateMatchesInString:processedString.string options:0 range:range
+                             usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop2)
+         {
+             NSAttributedString* repl = block(processedString, result);
+             if (repl)
+             {
+                 NSRange offsetRange = NSMakeRange(result.range.location - offset, result.range.length);
+                 [input replaceCharactersInRange:offsetRange withAttributedString:repl];
+                 offset += result.range.length - repl.length;
+             }
+         }];
+    }
 
 @end

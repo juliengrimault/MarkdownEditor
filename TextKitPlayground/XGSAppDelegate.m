@@ -8,16 +8,20 @@
 
 #import "XGSAppDelegate.h"
 #import "XGSTextViewController.h"
+#import "XGSMarkupDefinition.h"
+#import "UIColor+AppColor.h"
 
 @implementation XGSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.tintColor = [UIColor xgs_greenColor];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[XGSTextViewController alloc] init]];
+    XGSTextViewController *textVC = [[XGSTextViewController alloc] initWithMarkupProcessor:[XGSMarkupDefinition sharedInstance]];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:textVC];
     self.window.rootViewController = nav;
     return YES;
 }

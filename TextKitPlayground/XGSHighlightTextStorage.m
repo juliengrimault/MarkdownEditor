@@ -26,6 +26,7 @@
         _tagStyles = [tagStyles copy];
         _backingStore = [NSMutableAttributedString new];
         _normalFont = normalFont;
+        _textColor = [UIColor darkTextColor];
     }
     return self;
 }
@@ -106,7 +107,8 @@
      
 - (NSDictionary *)normalAttributes
 {
-    return @{ NSFontAttributeName : self.normalFont };
+    return @{ NSFontAttributeName : self.normalFont,
+              NSForegroundColorAttributeName : self.textColor };
 }
 
 
