@@ -10,12 +10,13 @@
 
 typedef NSAttributedString*(^TagProcessorBlockType)(NSAttributedString*, NSTextCheckingResult*);
 
+@class OrderedDictionary;
 @interface XGSMarkupDefinition : NSObject
 
 +(instancetype)sharedInstance;
 
 // keys are the regex for the tags and values are the NSAttributed string style
-@property (nonatomic, strong, readonly) NSDictionary *tagStyles;
+@property (nonatomic, strong, readonly) OrderedDictionary *tagStyles;
 
 @property (nonatomic, strong) UIFont *normalFont;
 

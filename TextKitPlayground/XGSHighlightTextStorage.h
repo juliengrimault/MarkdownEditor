@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class OrderedDictionary;
 @interface XGSHighlightTextStorage : NSTextStorage
 
 @property (strong, nonatomic) UIColor *textColor;
 
-- (id)initWithTagStyles:(NSDictionary *)tagStyles normalFont:(UIFont *)normalFont;
+- (id)initWithTagStyles:(OrderedDictionary *)tagStyles normalFont:(UIFont *)normalFont;
 
 @end

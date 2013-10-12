@@ -76,8 +76,12 @@ NSString* THMarkdownURegexBold = @"\\*\\*([^\\s].+?)\\*\\*"; /* "**xxx**" = xxx 
 
 - (void)computeTags
 {
-    _tagStyles =  @{ THMarkdownURegexItalic : @{NSFontAttributeName : _italicFont},
-                     THMarkdownURegexBold : @{NSFontAttributeName : _boldFont} };
+    _tagStyles = [OrderedDictionary new];
+    [_tagStyles insertObject:@{NSFontAttributeName : _italicFont}
+                                forKey:THMarkdownURegexItalic atIndex:0];
+    [_tagStyles insertObject:@{NSFontAttributeName : _boldFont}
+                                forKey:THMarkdownURegexBold atIndex:1];
+
     
     _tagProcessingBlocks = [OrderedDictionary new];
     [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSFontAttributeName : _boldFont}]

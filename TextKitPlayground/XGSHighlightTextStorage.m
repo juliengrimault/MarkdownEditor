@@ -7,9 +7,10 @@
 //
 
 #import "XGSHighlightTextStorage.h"
+#import "OrderedDictionary.h"
 
 @interface XGSHighlightTextStorage()
-@property (nonatomic, strong) NSDictionary *tagStyles;
+@property (nonatomic, strong) OrderedDictionary *tagStyles;
 @property (nonatomic, strong) UIFont *normalFont;
 @end
 
@@ -19,11 +20,11 @@
 
 
 #pragma mark - NSTextStorage implementation
-- (id)initWithTagStyles:(NSDictionary *)tagStyles normalFont:(UIFont *)normalFont
+- (id)initWithTagStyles:(OrderedDictionary *)tagStyles normalFont:(UIFont *)normalFont
 {
     self = [super init];
     if (self) {
-        _tagStyles = [tagStyles copy];
+        _tagStyles = tagStyles;
         _backingStore = [NSMutableAttributedString new];
         _normalFont = normalFont;
         _textColor = [UIColor darkTextColor];
@@ -94,7 +95,7 @@
                               range:range
                          usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
                              
-                             NSRange matchRange = [match rangeAtIndex:1];
+                             NSRange matchRange = [match rangeAtIndex:0];
                              [self addAttributes:attributes range:matchRange];
                              
                              // reset the style to the original
