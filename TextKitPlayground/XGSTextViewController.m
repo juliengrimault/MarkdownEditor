@@ -10,8 +10,10 @@
 #import "XGSHighlightTextStorage.h"
 #import "XGSMarkupDefinition.h"
 #import "XGSPreviewViewController.h"
+#import "XGSMarkdownInputAccessoryView.h"
+#import "UIColor+AppColor.h"
 
-@interface XGSTextViewController ()
+@interface XGSTextViewController ()<XGSMarkdownInputViewDelegate>
 @property (weak, nonatomic) UITextView *textView;
 @property (nonatomic, strong) NSTextStorage *textStorage;
 @property (nonatomic, strong) NSLayoutConstraint *keyboardHeight;
@@ -51,6 +53,11 @@
         [textView setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.textView = textView;
         [self.view addSubview:self.textView];
+        
+        XGSMarkdownInputAccessoryView *inputAccessoryView = [[XGSMarkdownInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+        inputAccessoryView.tintColor = [UIColor xgs_greenColor];
+        inputAccessoryView.delegate = self;
+        textView.inputAccessoryView = inputAccessoryView;
     }
 
     - (void)setupNavigationBarButton
@@ -81,7 +88,8 @@
     - (void)setupConstraints
     {
         id editView = self.textView;
-        NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(editView);
+        id inputAccessoryView = self.textView.inputAccessoryView;
+        NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(editView, inputAccessoryView);
         [self.view addConstraints:
          [NSLayoutConstraint constraintsWithVisualFormat: @"H:|[editView]|"
                                                  options: 0
@@ -149,5 +157,35 @@
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     }
+
+#pragma mark - XGSMarkdownInputViewDelegate
+- (void)markdownInputViewDidDismiss:(XGSMarkdownInputAccessoryView *)inputView
+{
+    [self.textView resignFirstResponder];
+}
+
+- (void)markdownInputView:(XGSMarkdownInputAccessoryView *)inputView didSelectPattern:(NSString *)pattern insertionIndex:(NSUInteger)insertionIndex;
+{
+    NSRange selectedRange = self.textView.selectedRange;
+    NSAttributedString *insertBefore = [[NSAttributedString alloc] initWithString:[pattern substringWithRange:NSMakeRange(0, insertionIndex)]];
+    NSAttributedString *insertAfter = [[NSAttributedString alloc] initWithString:[pattern substringWithRange:NSMakeRange(insertionIndex, pattern.length - insertionIndex)]];
+
+    // the order in which we insert the 2 segments of the pattern is important - we must insert right part of the pattern first
+    // in order to not shift the letters
+    NSUInteger insertionEnd = NSMaxRange(self.textView.selectedRange);
+    if (insertionEnd == self.textStorage.string.length)
+    {
+        [self.textStorage appendAttributedString:insertAfter];
+    } else {
+        [self.textStorage insertAttributedString:insertAfter
+                                         atIndex:insertionEnd];
+    }
+    
+    [self.textStorage insertAttributedString:insertBefore
+                                     atIndex:selectedRange.location];
+    
+    self.textView.selectedRange = NSMakeRange(selectedRange.location + insertBefore.string.length, 0);
+
+}
 
 @end
