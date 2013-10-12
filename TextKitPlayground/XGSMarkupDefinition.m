@@ -8,7 +8,7 @@
 
 #import "XGSMarkupDefinition.h"
 
-NSString* THMarkdownURegexItalic = @"\\*(.+?)\\*"; /* "_xxx_" = xxx in italics */
+NSString* THMarkdownURegexItalic = @"\\*(.+?)\\*"; /* "*xxx*" = xxx in italics */
 NSString* THMarkdownURegexBold = @"\\*\\*(.+?)\\*\\*"; /* "**xxx**" = xxx in bold */
 
 

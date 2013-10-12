@@ -16,9 +16,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    self.tabBarController = [[UITabBarController alloc] init];
-    self.window.rootViewController = self.tabBarController;
-    self.tabBarController.viewControllers = @[[[XGSTextViewController alloc] init]];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[XGSTextViewController alloc] init]];
+    self.window.rootViewController = nav;
     return YES;
 }
 

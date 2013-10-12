@@ -9,7 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface XGSTextViewController : UIViewController
-
-@property (weak, nonatomic) UITextView *textView;
-@property (weak, nonatomic) UITextView *readonlyView;
 @end

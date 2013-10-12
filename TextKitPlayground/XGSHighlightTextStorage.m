@@ -74,27 +74,39 @@
 
 - (void)processRange:(NSRange)range
 {
+    [_backingStore setAttributes:[self normalAttributes] range:range];
+    
     [self.tagStyles enumerateKeysAndObjectsUsingBlock:^(NSString *pattern, NSDictionary *attributes, BOOL *stop) {
-        NSRegularExpression *regex = [NSRegularExpression
-                                      regularExpressionWithPattern:pattern
-                                      options:0
-                                      error:nil];
-        
-        [regex enumerateMatchesInString:[_backingStore string]
-                                options:0
-                                  range:range
-                             usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
-
-                                 NSRange matchRange = [match rangeAtIndex:1];
-                                 [self addAttributes:attributes range:matchRange];
-                                 
-                                 // reset the style to the original
-                                 if (NSMaxRange(matchRange)+1 < self.length) {
-                                     [self addAttributes:@{ NSFontAttributeName : self.normalFont }
-                                                   range:NSMakeRange(NSMaxRange(matchRange)+1, 1)];
-                                 }
-                             }];
+        [self applyStyle:attributes forRegex:pattern inRange:range];
     }];
+}
+
+- (void)applyStyle:(NSDictionary *)attributes forRegex:(NSString *)pattern inRange:(NSRange)range
+{
+    NSRegularExpression *regex = [NSRegularExpression
+                                  regularExpressionWithPattern:pattern
+                                  options:0
+                                  error:nil];
+    
+    [regex enumerateMatchesInString:[_backingStore string]
+                            options:0
+                              range:range
+                         usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
+                             
+                             NSRange matchRange = [match rangeAtIndex:1];
+                             [self addAttributes:attributes range:matchRange];
+                             
+                             // reset the style to the original
+                             if (NSMaxRange(matchRange)+1 < self.length) {
+                                 [self addAttributes:[self normalAttributes]
+                                               range:NSMakeRange(NSMaxRange(matchRange)+1, 1)];
+                             }
+                         }];
+}
+     
+- (NSDictionary *)normalAttributes
+{
+    return @{ NSFontAttributeName : self.normalFont };
 }
 
 

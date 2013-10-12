@@ -22,6 +22,7 @@
 		F99DA52A1807F92D00176BE7 /* XGSTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA5291807F92D00176BE7 /* XGSTextViewController.m */; };
 		F99DA52D1808032300176BE7 /* XGSHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA52C1808032300176BE7 /* XGSHighlightTextStorage.m */; };
 		F99DA53018080B0A00176BE7 /* XGSMarkupDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA52F18080B0A00176BE7 /* XGSMarkupDefinition.m */; };
+		F9C13A8618085B64005C4D9D /* XGSPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C13A8518085B64005C4D9D /* XGSPreviewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		F99DA52C1808032300176BE7 /* XGSHighlightTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSHighlightTextStorage.m; sourceTree = "<group>"; };
 		F99DA52E18080B0A00176BE7 /* XGSMarkupDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSMarkupDefinition.h; sourceTree = "<group>"; };
 		F99DA52F18080B0A00176BE7 /* XGSMarkupDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSMarkupDefinition.m; sourceTree = "<group>"; };
+		F9C13A8418085B64005C4D9D /* XGSPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSPreviewViewController.h; sourceTree = "<group>"; };
+		F9C13A8518085B64005C4D9D /* XGSPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSPreviewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 				F99DA52C1808032300176BE7 /* XGSHighlightTextStorage.m */,
 				F99DA52E18080B0A00176BE7 /* XGSMarkupDefinition.h */,
 				F99DA52F18080B0A00176BE7 /* XGSMarkupDefinition.m */,
+				F9C13A8418085B64005C4D9D /* XGSPreviewViewController.h */,
+				F9C13A8518085B64005C4D9D /* XGSPreviewViewController.m */,
 			);
 			path = TextKitPlayground;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				F99DA53018080B0A00176BE7 /* XGSMarkupDefinition.m in Sources */,
 				F99DA5061807F84C00176BE7 /* main.m in Sources */,
 				F99DA52A1807F92D00176BE7 /* XGSTextViewController.m in Sources */,
+				F9C13A8618085B64005C4D9D /* XGSPreviewViewController.m in Sources */,
 				F99DA50A1807F84C00176BE7 /* XGSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +466,7 @@
 				F99DA5241807F84C00176BE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F99DA5251807F84C00176BE7 /* Build configuration list for PBXNativeTarget "TextKitPlaygroundTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +475,7 @@
 				F99DA5271807F84C00176BE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
