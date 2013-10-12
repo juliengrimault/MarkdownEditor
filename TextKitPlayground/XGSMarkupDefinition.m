@@ -9,8 +9,8 @@
 #import "XGSMarkupDefinition.h"
 #import "OrderedDictionary.h"
 
-NSString* THMarkdownURegexItalic = @"\\*([^\\s].+?)\\*"; /* "*xxx*" = xxx in italics */
-NSString* THMarkdownURegexBold = @"\\*\\*([^\\s].+?)\\*\\*"; /* "**xxx**" = xxx in bold */
+NSString* THMarkdownURegexItalic = @"\\*([^\\s].*?)\\*"; /* "*xxx*" = xxx in italics */
+NSString* THMarkdownURegexBold = @"\\*\\*([^\\s].*?)\\*\\*"; /* "**xxx**" = xxx in bold */
 
 
 @interface XGSMarkupDefinition()
