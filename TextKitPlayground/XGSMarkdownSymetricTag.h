@@ -10,6 +10,8 @@
 
 @interface XGSMarkdownSymetricTag : NSObject<NSCopying>
 
+@property (nonatomic, readonly, copy) NSString *name;
+
 /// the pattern delimiting the tag on the left and right.
 @property (nonatomic, readonly, copy) NSString *pattern;
 

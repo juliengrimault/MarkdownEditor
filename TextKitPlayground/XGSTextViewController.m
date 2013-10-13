@@ -13,6 +13,7 @@
 #import "XGSMarkdownInputAccessoryView.h"
 #import "UIColor+AppColor.h"
 #import "XGSMarkdownSymetricTag.h"
+#import "PSMenuItem.h"
 
 @interface XGSTextViewController ()<XGSMarkdownInputViewDelegate>
 @property (weak, nonatomic) UITextView *textView;
@@ -21,6 +22,14 @@
 @end
 
 @implementation XGSTextViewController
+
++ (void)load {
+    [PSMenuItem installMenuHandlerForObject:self];
+}
+
++ (void)initialize {
+    [PSMenuItem installMenuHandlerForObject:self];
+}
 
 - (id)initWithMarkupProcessor:(XGSMarkupDefinition *)markupProcessor
 {
@@ -38,6 +47,7 @@
 
     [self setupTextView];
     [self setupNavigationBarButton];
+    [self addCustomMenuItems];
 }
 
     - (void)setupTextView
@@ -76,6 +86,22 @@
             XGSPreviewViewController *previewVC = [[XGSPreviewViewController alloc] initWithText:parsedText];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:previewVC];
             [self presentViewController:nav animated:YES completion:nil];
+        }
+
+    - (void)addCustomMenuItems
+    {
+        NSMutableArray *items = [NSMutableArray new];
+        for(XGSMarkdownSymetricTag *tag in self.markupProcessor.markdownTags) {
+            [items addObject:[self menuItemForMarkdownTag:tag]];
+        }
+        [UIMenuController sharedMenuController].menuItems = items;
+    }
+
+        - (UIMenuItem *)menuItemForMarkdownTag:(XGSMarkdownSymetricTag *)tag
+        {
+            return [[PSMenuItem alloc] initWithTitle:tag.name block:^{
+                [self insertMarkdownTag:tag];
+            }];
         }
 
 - (void)viewDidLoad
@@ -167,10 +193,15 @@
 
 - (void)markdownInputView:(XGSMarkdownInputAccessoryView *)inputView didSelectMarkdownElement:(XGSMarkdownSymetricTag *)element
 {
-    NSRange selectedRange = self.textView.selectedRange;
-    NSAttributedString *insertBefore = [[NSAttributedString alloc] initWithString:element.pattern];
-    NSAttributedString *insertAfter = [[NSAttributedString alloc] initWithString:element.pattern];
+    [self insertMarkdownTag:element];
+}
 
+- (void)insertMarkdownTag:(XGSMarkdownSymetricTag *)tag
+{
+    NSRange selectedRange = self.textView.selectedRange;
+    NSAttributedString *insertBefore = [[NSAttributedString alloc] initWithString:tag.pattern];
+    NSAttributedString *insertAfter = [[NSAttributedString alloc] initWithString:tag.pattern];
+    
     // the order in which we insert the 2 segments of the pattern is important - we must insert right part of the pattern first
     // in order to not shift the letters
     NSUInteger insertionEnd = NSMaxRange(self.textView.selectedRange);
@@ -186,7 +217,6 @@
                                      atIndex:selectedRange.location];
     
     self.textView.selectedRange = NSMakeRange(selectedRange.location + insertBefore.string.length, 0);
-
 }
 
 @end

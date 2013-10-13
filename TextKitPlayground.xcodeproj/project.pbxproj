@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F98D14C1180980C9007D4CCB /* XGSMarkdownInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F98D14C0180980C9007D4CCB /* XGSMarkdownInputAccessoryView.m */; };
 		F98D14C4180A9388007D4CCB /* XGSMarkdownSymetricTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F98D14C3180A9388007D4CCB /* XGSMarkdownSymetricTag.m */; };
+		F98D14CA180AAC75007D4CCB /* PSMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F98D14C9180AAC75007D4CCB /* PSMenuItem.m */; };
 		F98DED921808E5CB001478FD /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = F98DED911808E5CB001478FD /* OrderedDictionary.m */; };
 		F98DED951808E7AD001478FD /* UIColor+AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F98DED941808E7AD001478FD /* UIColor+AppColor.m */; };
 		F99DA4FA1807F84C00176BE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA4F91807F84C00176BE7 /* Foundation.framework */; };
@@ -44,6 +45,8 @@
 		F98D14C0180980C9007D4CCB /* XGSMarkdownInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSMarkdownInputAccessoryView.m; sourceTree = "<group>"; };
 		F98D14C2180A9388007D4CCB /* XGSMarkdownSymetricTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSMarkdownSymetricTag.h; sourceTree = "<group>"; };
 		F98D14C3180A9388007D4CCB /* XGSMarkdownSymetricTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSMarkdownSymetricTag.m; sourceTree = "<group>"; };
+		F98D14C8180AAC75007D4CCB /* PSMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMenuItem.h; sourceTree = "<group>"; };
+		F98D14C9180AAC75007D4CCB /* PSMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMenuItem.m; sourceTree = "<group>"; };
 		F98DED901808E5CB001478FD /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
 		F98DED911808E5CB001478FD /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		F98DED931808E7AD001478FD /* UIColor+AppColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColor.h"; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 		F99DA4FF1807F84C00176BE7 /* TextKitPlayground */ = {
 			isa = PBXGroup;
 			children = (
+				F98D14C8180AAC75007D4CCB /* PSMenuItem.h */,
+				F98D14C9180AAC75007D4CCB /* PSMenuItem.m */,
 				F98DED901808E5CB001478FD /* OrderedDictionary.h */,
 				F98DED911808E5CB001478FD /* OrderedDictionary.m */,
 				F99DA5081807F84C00176BE7 /* XGSAppDelegate.h */,
@@ -281,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F98D14C4180A9388007D4CCB /* XGSMarkdownSymetricTag.m in Sources */,
+				F98D14CA180AAC75007D4CCB /* PSMenuItem.m in Sources */,
 				F99DA52D1808032300176BE7 /* XGSHighlightTextStorage.m in Sources */,
 				F99DA53018080B0A00176BE7 /* XGSMarkupDefinition.m in Sources */,
 				F99DA5061807F84C00176BE7 /* main.m in Sources */,

@@ -73,21 +73,22 @@
 
 - (void)computeTags
 {
+    _markdownTags = @[[XGSMarkdownSymetricTag italic], [XGSMarkdownSymetricTag bold]];
     _tagStyles = [OrderedDictionary new];
     [_tagStyles insertObject:@{NSFontAttributeName : _italicFont}
-                      forKey:[XGSMarkdownSymetricTag italic]
+                      forKey:_markdownTags[0]
                      atIndex:0];
     [_tagStyles insertObject:@{NSFontAttributeName : _boldFont}
-                      forKey:[XGSMarkdownSymetricTag bold]
+                      forKey:_markdownTags[1]
                      atIndex:1];
 
     
     _tagProcessingBlocks = [OrderedDictionary new];
     [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSFontAttributeName : _boldFont}]
-                                forKey:[XGSMarkdownSymetricTag bold]
+                                forKey:_markdownTags[1]
                                atIndex:0];
     [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSFontAttributeName : _italicFont}]
-                                forKey:[XGSMarkdownSymetricTag italic]
+                                forKey:_markdownTags[0]
                                atIndex:1];
 }
 

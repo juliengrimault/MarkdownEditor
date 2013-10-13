@@ -15,6 +15,9 @@ typedef NSAttributedString*(^TagProcessorBlockType)(NSAttributedString*, NSTextC
 
 +(instancetype)sharedInstance;
 
+// the markdown tags that are recognized
+@property (nonatomic, strong, readonly) NSArray *markdownTags;
+
 // keys are the XGSMarkdownElement and values are the NSAttributed string style
 @property (nonatomic, strong, readonly) OrderedDictionary *tagStyles;
 

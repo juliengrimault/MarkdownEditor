@@ -8,17 +8,14 @@
 
 #import "XGSMarkdownSymetricTag.h"
 
-@interface XGSMarkdownSymetricTag()
-// private constructor, clients should use the class method provided
-- (instancetype)initWithPattern:(NSString *)pattern regexPattern:(NSString *)regexPattern;
-@end
 
 @implementation XGSMarkdownSymetricTag
 
-- (instancetype)initWithPattern:(NSString *)pattern regexPattern:(NSString *)regexPattern
+- (instancetype)initWithName:(NSString *)name pattern:(NSString *)pattern regexPattern:(NSString *)regexPattern
 {
     self = [super init];
     if (self) {
+        _name = [name copy];
         _pattern = [pattern copy];
         _regexPattern = [regexPattern copy];
     }
@@ -44,7 +41,9 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    XGSMarkdownSymetricTag *element = [[XGSMarkdownSymetricTag allocWithZone:zone] initWithPattern:self.pattern regexPattern:self.regexPattern];
+    XGSMarkdownSymetricTag *element = [[XGSMarkdownSymetricTag allocWithZone:zone] initWithName:self.name
+                                                                                        pattern:self.pattern
+                                                                                   regexPattern:self.regexPattern];
     return element;
 }
 
@@ -56,11 +55,11 @@ NSString* MarkdownRegexBold = @"\\*\\*([^\\s].*?)\\*\\*"; /* "**xxx**" = xxx in 
 @implementation XGSMarkdownSymetricTag(Factory)
 +(instancetype)italic
 {
-    return [[self alloc] initWithPattern:@"*" regexPattern:MarkdownRegexItalic];
+    return [[self alloc] initWithName:NSLocalizedString(@"Italic", nil) pattern:@"*" regexPattern:MarkdownRegexItalic];
 }
 
 +(instancetype)bold
 {
-    return [[self alloc] initWithPattern:@"**" regexPattern:MarkdownRegexBold];
+    return [[self alloc] initWithName:NSLocalizedString(@"Bold", nil) pattern:@"**" regexPattern:MarkdownRegexBold];
 }
 @end
