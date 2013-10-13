@@ -19,6 +19,7 @@
 @interface XGSMarkdownInputAccessoryView : UIView
 
 @property (weak, nonatomic) id<XGSMarkdownInputViewDelegate> delegate;
+@property (nonatomic) NSArray *markdownTags;
 
 @end
 

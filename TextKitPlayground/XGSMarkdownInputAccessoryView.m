@@ -12,8 +12,7 @@
 static const CGFloat kDistanceBetweenButtons = 8.0f;
 
 @interface XGSMarkdownInputAccessoryView()
-@property (strong, nonatomic) UIButton *boldButton;
-@property (strong, nonatomic) UIButton *italicButton;
+@property (nonatomic, strong) NSMutableDictionary *buttons;
 @property (strong, nonatomic) UIButton *dismissKeyboardButton;
 @end
 
@@ -39,9 +38,8 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
 
 - (void)commonInit
 {
+    _buttons = [NSMutableDictionary new];
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.boldButton = [self createButtonWithTitle:NSLocalizedString(@"Bold", nil) target:@selector(makeBold:)];
-    self.italicButton = [self createButtonWithTitle:NSLocalizedString(@"Italic", nil) target:@selector(makeItalic:)];
     self.dismissKeyboardButton = [self createButtonWithTitle:NSLocalizedString(@"Dismiss", nil) target:@selector(dismissKeyboard:)];
 }
 
@@ -54,9 +52,36 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
         return b;
     }
 
-- (void)makeBold:(id)sender
+- (void)setMarkdownTags:(NSArray *)markdownTags
 {
-    [self.delegate markdownInputView:self didSelectMarkdownElement:[XGSMarkdownSymetricTag bold]];
+    [self removeAllButtons];
+    
+    for(XGSMarkdownSymetricTag *tag in markdownTags) {
+        UIButton *b = [self createButtonWithTitle:tag.name target:@selector(insertMarkdown:)];
+        _buttons[tag] = b;
+    }
+}
+
+    - (void)removeAllButtons
+    {
+        [_buttons enumerateKeysAndObjectsUsingBlock:^(id key, UIButton *b, BOOL *stop) {
+            [b removeFromSuperview];
+        }];
+        [_buttons removeAllObjects];
+    }
+
+- (NSArray *)markdownTags
+{
+    return [_buttons allKeys];
+}
+
+- (void)insertMarkdown:(id)sender
+{
+    NSArray *tags = [_buttons allKeysForObject:sender];
+    if (tags != nil && tags.count > 0)
+    {
+        [self.delegate markdownInputView:self didSelectMarkdownElement:tags.firstObject];
+    }
 }
 
 - (void)makeItalic:(id)sender
@@ -73,13 +98,15 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
 {
     CGFloat centerY = self.bounds.size.height * 0.5f;
     
-    [self.italicButton sizeToFit];
-    CGFloat centerItalicX = kDistanceBetweenButtons + self.italicButton.bounds.size.width * 0.5f;
-    self.italicButton.center = CGPointMake(centerItalicX, centerY);
-
-    [self.boldButton sizeToFit];
-    CGFloat centerBoldX = kDistanceBetweenButtons * 2 + self.italicButton.bounds.size.width + self.boldButton.bounds.size.width * 0.5f;
-    self.boldButton.center = CGPointMake(centerBoldX, centerY);
+    __block NSUInteger i = 0;
+    __block CGFloat centerX = 0;
+    [self.buttons enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownSymetricTag *tag, UIButton *b, BOOL *stop) {
+        [b sizeToFit];
+        centerX +=  kDistanceBetweenButtons + b.bounds.size.width * 0.5f;
+        b.center = CGPointMake(centerX, centerY);
+        centerX += b.bounds.size.width * 0.5f;
+        ++i;
+    }];
     
     [self.dismissKeyboardButton sizeToFit];
     CGFloat centerDismissX = self.bounds.size.width - kDistanceBetweenButtons - self.dismissKeyboardButton.bounds.size.width * 0.5f;

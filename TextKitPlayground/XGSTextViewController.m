@@ -66,6 +66,7 @@
         [self.view addSubview:self.textView];
         
         XGSMarkdownInputAccessoryView *inputAccessoryView = [[XGSMarkdownInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+        inputAccessoryView.markdownTags = self.markupProcessor.markdownTags;
         inputAccessoryView.tintColor = [UIColor xgs_greenColor];
         inputAccessoryView.delegate = self;
         textView.inputAccessoryView = inputAccessoryView;
