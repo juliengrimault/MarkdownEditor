@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F99DA4F51807F84C00176BE7"
                BuildableName = "TextKitPlayground.app"
-               BlueprintName = "TextKitPlayground"
-               ReferencedContainer = "container:TextKitPlayground.xcodeproj">
+               BlueprintName = "MarkdownEditor"
+               ReferencedContainer = "container:MarkdownEditor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F99DA5101807F84C00176BE7"
                BuildableName = "TextKitPlaygroundTests.xctest"
-               BlueprintName = "TextKitPlaygroundTests"
-               ReferencedContainer = "container:TextKitPlayground.xcodeproj">
+               BlueprintName = "MarkdownEditorTests"
+               ReferencedContainer = "container:MarkdownEditor.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F99DA4F51807F84C00176BE7"
             BuildableName = "TextKitPlayground.app"
-            BlueprintName = "TextKitPlayground"
-            ReferencedContainer = "container:TextKitPlayground.xcodeproj">
+            BlueprintName = "MarkdownEditor"
+            ReferencedContainer = "container:MarkdownEditor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F99DA4F51807F84C00176BE7"
             BuildableName = "TextKitPlayground.app"
-            BlueprintName = "TextKitPlayground"
-            ReferencedContainer = "container:TextKitPlayground.xcodeproj">
+            BlueprintName = "MarkdownEditor"
+            ReferencedContainer = "container:MarkdownEditor.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F99DA4F51807F84C00176BE7"
             BuildableName = "TextKitPlayground.app"
-            BlueprintName = "TextKitPlayground"
-            ReferencedContainer = "container:TextKitPlayground.xcodeproj">
+            BlueprintName = "MarkdownEditor"
+            ReferencedContainer = "container:MarkdownEditor.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

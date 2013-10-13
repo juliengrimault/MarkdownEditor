@@ -51,20 +51,20 @@
 		F98DED911808E5CB001478FD /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		F98DED931808E7AD001478FD /* UIColor+AppColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColor.h"; sourceTree = "<group>"; };
 		F98DED941808E7AD001478FD /* UIColor+AppColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColor.m"; sourceTree = "<group>"; };
-		F99DA4F61807F84C00176BE7 /* TextKitPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextKitPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F99DA4F61807F84C00176BE7 /* MarkdownEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarkdownEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99DA4F91807F84C00176BE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F99DA4FB1807F84C00176BE7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F99DA4FD1807F84C00176BE7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F99DA5011807F84C00176BE7 /* TextKitPlayground-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TextKitPlayground-Info.plist"; sourceTree = "<group>"; };
+		F99DA5011807F84C00176BE7 /* MarkdownEditor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MarkdownEditor-Info.plist"; sourceTree = "<group>"; };
 		F99DA5031807F84C00176BE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F99DA5051807F84C00176BE7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F99DA5071807F84C00176BE7 /* TextKitPlayground-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TextKitPlayground-Prefix.pch"; sourceTree = "<group>"; };
+		F99DA5071807F84C00176BE7 /* MarkdownEditor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarkdownEditor-Prefix.pch"; sourceTree = "<group>"; };
 		F99DA5081807F84C00176BE7 /* XGSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGSAppDelegate.h; sourceTree = "<group>"; };
 		F99DA5091807F84C00176BE7 /* XGSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGSAppDelegate.m; sourceTree = "<group>"; };
 		F99DA50B1807F84C00176BE7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F99DA5111807F84C00176BE7 /* TextKitPlaygroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextKitPlaygroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F99DA5111807F84C00176BE7 /* MarkdownEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarkdownEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99DA5121807F84C00176BE7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F99DA51A1807F84C00176BE7 /* TextKitPlaygroundTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TextKitPlaygroundTests-Info.plist"; sourceTree = "<group>"; };
+		F99DA51A1807F84C00176BE7 /* MarkdownEditorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MarkdownEditorTests-Info.plist"; sourceTree = "<group>"; };
 		F99DA51C1807F84C00176BE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F99DA51E1807F84C00176BE7 /* TextKitPlaygroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextKitPlaygroundTests.m; sourceTree = "<group>"; };
 		F99DA5281807F92D00176BE7 /* XGSTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSTextViewController.h; sourceTree = "<group>"; };
@@ -104,8 +104,8 @@
 		F99DA4ED1807F84C00176BE7 = {
 			isa = PBXGroup;
 			children = (
-				F99DA4FF1807F84C00176BE7 /* TextKitPlayground */,
-				F99DA5181807F84C00176BE7 /* TextKitPlaygroundTests */,
+				F99DA4FF1807F84C00176BE7 /* MarkdownEditor */,
+				F99DA5181807F84C00176BE7 /* MarkdownEditorTests */,
 				F99DA4F81807F84C00176BE7 /* Frameworks */,
 				F99DA4F71807F84C00176BE7 /* Products */,
 			);
@@ -114,8 +114,8 @@
 		F99DA4F71807F84C00176BE7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F99DA4F61807F84C00176BE7 /* TextKitPlayground.app */,
-				F99DA5111807F84C00176BE7 /* TextKitPlaygroundTests.xctest */,
+				F99DA4F61807F84C00176BE7 /* MarkdownEditor.app */,
+				F99DA5111807F84C00176BE7 /* MarkdownEditorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,7 +131,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F99DA4FF1807F84C00176BE7 /* TextKitPlayground */ = {
+		F99DA4FF1807F84C00176BE7 /* MarkdownEditor */ = {
 			isa = PBXGroup;
 			children = (
 				F98D14C8180AAC75007D4CCB /* PSMenuItem.h */,
@@ -157,33 +157,35 @@
 				F98D14C2180A9388007D4CCB /* XGSMarkdownSymetricTag.h */,
 				F98D14C3180A9388007D4CCB /* XGSMarkdownSymetricTag.m */,
 			);
+			name = MarkdownEditor;
 			path = TextKitPlayground;
 			sourceTree = "<group>";
 		};
 		F99DA5001807F84C00176BE7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F99DA5011807F84C00176BE7 /* TextKitPlayground-Info.plist */,
+				F99DA5011807F84C00176BE7 /* MarkdownEditor-Info.plist */,
 				F99DA5021807F84C00176BE7 /* InfoPlist.strings */,
 				F99DA5051807F84C00176BE7 /* main.m */,
-				F99DA5071807F84C00176BE7 /* TextKitPlayground-Prefix.pch */,
+				F99DA5071807F84C00176BE7 /* MarkdownEditor-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F99DA5181807F84C00176BE7 /* TextKitPlaygroundTests */ = {
+		F99DA5181807F84C00176BE7 /* MarkdownEditorTests */ = {
 			isa = PBXGroup;
 			children = (
 				F99DA51E1807F84C00176BE7 /* TextKitPlaygroundTests.m */,
 				F99DA5191807F84C00176BE7 /* Supporting Files */,
 			);
+			name = MarkdownEditorTests;
 			path = TextKitPlaygroundTests;
 			sourceTree = "<group>";
 		};
 		F99DA5191807F84C00176BE7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F99DA51A1807F84C00176BE7 /* TextKitPlaygroundTests-Info.plist */,
+				F99DA51A1807F84C00176BE7 /* MarkdownEditorTests-Info.plist */,
 				F99DA51B1807F84C00176BE7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -192,9 +194,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F99DA4F51807F84C00176BE7 /* TextKitPlayground */ = {
+		F99DA4F51807F84C00176BE7 /* MarkdownEditor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F99DA5221807F84C00176BE7 /* Build configuration list for PBXNativeTarget "TextKitPlayground" */;
+			buildConfigurationList = F99DA5221807F84C00176BE7 /* Build configuration list for PBXNativeTarget "MarkdownEditor" */;
 			buildPhases = (
 				F99DA4F21807F84C00176BE7 /* Sources */,
 				F99DA4F31807F84C00176BE7 /* Frameworks */,
@@ -204,14 +206,14 @@
 			);
 			dependencies = (
 			);
-			name = TextKitPlayground;
+			name = MarkdownEditor;
 			productName = TextKitPlayground;
-			productReference = F99DA4F61807F84C00176BE7 /* TextKitPlayground.app */;
+			productReference = F99DA4F61807F84C00176BE7 /* MarkdownEditor.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F99DA5101807F84C00176BE7 /* TextKitPlaygroundTests */ = {
+		F99DA5101807F84C00176BE7 /* MarkdownEditorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F99DA5251807F84C00176BE7 /* Build configuration list for PBXNativeTarget "TextKitPlaygroundTests" */;
+			buildConfigurationList = F99DA5251807F84C00176BE7 /* Build configuration list for PBXNativeTarget "MarkdownEditorTests" */;
 			buildPhases = (
 				F99DA50D1807F84C00176BE7 /* Sources */,
 				F99DA50E1807F84C00176BE7 /* Frameworks */,
@@ -222,9 +224,9 @@
 			dependencies = (
 				F99DA5171807F84C00176BE7 /* PBXTargetDependency */,
 			);
-			name = TextKitPlaygroundTests;
+			name = MarkdownEditorTests;
 			productName = TextKitPlaygroundTests;
-			productReference = F99DA5111807F84C00176BE7 /* TextKitPlaygroundTests.xctest */;
+			productReference = F99DA5111807F84C00176BE7 /* MarkdownEditorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -242,7 +244,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F99DA4F11807F84C00176BE7 /* Build configuration list for PBXProject "TextKitPlayground" */;
+			buildConfigurationList = F99DA4F11807F84C00176BE7 /* Build configuration list for PBXProject "MarkdownEditor" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -254,8 +256,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F99DA4F51807F84C00176BE7 /* TextKitPlayground */,
-				F99DA5101807F84C00176BE7 /* TextKitPlaygroundTests */,
+				F99DA4F51807F84C00176BE7 /* MarkdownEditor */,
+				F99DA5101807F84C00176BE7 /* MarkdownEditorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -312,7 +314,7 @@
 /* Begin PBXTargetDependency section */
 		F99DA5171807F84C00176BE7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F99DA4F51807F84C00176BE7 /* TextKitPlayground */;
+			target = F99DA4F51807F84C00176BE7 /* MarkdownEditor */;
 			targetProxy = F99DA5161807F84C00176BE7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -415,9 +417,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TextKitPlayground/TextKitPlayground-Prefix.pch";
-				INFOPLIST_FILE = "TextKitPlayground/TextKitPlayground-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "TextKitPlayground/MarkdownEditor-Prefix.pch";
+				INFOPLIST_FILE = "TextKitPlayground/MarkdownEditor-Info.plist";
+				PRODUCT_NAME = MarkdownEditor;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -428,9 +430,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TextKitPlayground/TextKitPlayground-Prefix.pch";
-				INFOPLIST_FILE = "TextKitPlayground/TextKitPlayground-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "TextKitPlayground/MarkdownEditor-Prefix.pch";
+				INFOPLIST_FILE = "TextKitPlayground/MarkdownEditor-Info.plist";
+				PRODUCT_NAME = MarkdownEditor;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -451,8 +453,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "TextKitPlaygroundTests/TextKitPlaygroundTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "TextKitPlaygroundTests/MarkdownEditorTests-Info.plist";
+				PRODUCT_NAME = MarkdownEditorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -470,8 +472,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TextKitPlayground/TextKitPlayground-Prefix.pch";
-				INFOPLIST_FILE = "TextKitPlaygroundTests/TextKitPlaygroundTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "TextKitPlaygroundTests/MarkdownEditorTests-Info.plist";
+				PRODUCT_NAME = MarkdownEditorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -480,7 +482,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F99DA4F11807F84C00176BE7 /* Build configuration list for PBXProject "TextKitPlayground" */ = {
+		F99DA4F11807F84C00176BE7 /* Build configuration list for PBXProject "MarkdownEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F99DA5201807F84C00176BE7 /* Debug */,
@@ -489,7 +491,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F99DA5221807F84C00176BE7 /* Build configuration list for PBXNativeTarget "TextKitPlayground" */ = {
+		F99DA5221807F84C00176BE7 /* Build configuration list for PBXNativeTarget "MarkdownEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F99DA5231807F84C00176BE7 /* Debug */,
@@ -498,7 +500,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F99DA5251807F84C00176BE7 /* Build configuration list for PBXNativeTarget "TextKitPlaygroundTests" */ = {
+		F99DA5251807F84C00176BE7 /* Build configuration list for PBXNativeTarget "MarkdownEditorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F99DA5261807F84C00176BE7 /* Debug */,

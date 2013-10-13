@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TextKitPlayground.xcodeproj">
+      location = "self:MarkdownEditor.xcodeproj">
    </FileRef>
 </Workspace>
