@@ -12,6 +12,7 @@
 #import "XGSPreviewViewController.h"
 #import "XGSMarkdownInputAccessoryView.h"
 #import "UIColor+AppColor.h"
+#import "XGSMarkdownSymetricTag.h"
 
 @interface XGSTextViewController ()<XGSMarkdownInputViewDelegate>
 @property (weak, nonatomic) UITextView *textView;
@@ -164,11 +165,11 @@
     [self.textView resignFirstResponder];
 }
 
-- (void)markdownInputView:(XGSMarkdownInputAccessoryView *)inputView didSelectPattern:(NSString *)pattern insertionIndex:(NSUInteger)insertionIndex;
+- (void)markdownInputView:(XGSMarkdownInputAccessoryView *)inputView didSelectMarkdownElement:(XGSMarkdownSymetricTag *)element
 {
     NSRange selectedRange = self.textView.selectedRange;
-    NSAttributedString *insertBefore = [[NSAttributedString alloc] initWithString:[pattern substringWithRange:NSMakeRange(0, insertionIndex)]];
-    NSAttributedString *insertAfter = [[NSAttributedString alloc] initWithString:[pattern substringWithRange:NSMakeRange(insertionIndex, pattern.length - insertionIndex)]];
+    NSAttributedString *insertBefore = [[NSAttributedString alloc] initWithString:element.pattern];
+    NSAttributedString *insertAfter = [[NSAttributedString alloc] initWithString:element.pattern];
 
     // the order in which we insert the 2 segments of the pattern is important - we must insert right part of the pattern first
     // in order to not shift the letters

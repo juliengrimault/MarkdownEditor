@@ -8,10 +8,7 @@
 
 #import "XGSMarkupDefinition.h"
 #import "OrderedDictionary.h"
-
-NSString* THMarkdownURegexItalic = @"\\*([^\\s].*?)\\*"; /* "*xxx*" = xxx in italics */
-NSString* THMarkdownURegexBold = @"\\*\\*([^\\s].*?)\\*\\*"; /* "**xxx**" = xxx in bold */
-
+#import "XGSMarkdownSymetricTag.h"
 
 @interface XGSMarkupDefinition()
 
@@ -78,16 +75,20 @@ NSString* THMarkdownURegexBold = @"\\*\\*([^\\s].*?)\\*\\*"; /* "**xxx**" = xxx 
 {
     _tagStyles = [OrderedDictionary new];
     [_tagStyles insertObject:@{NSFontAttributeName : _italicFont}
-                                forKey:THMarkdownURegexItalic atIndex:0];
+                      forKey:[XGSMarkdownSymetricTag italic]
+                     atIndex:0];
     [_tagStyles insertObject:@{NSFontAttributeName : _boldFont}
-                                forKey:THMarkdownURegexBold atIndex:1];
+                      forKey:[XGSMarkdownSymetricTag bold]
+                     atIndex:1];
 
     
     _tagProcessingBlocks = [OrderedDictionary new];
     [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSFontAttributeName : _boldFont}]
-                                forKey:THMarkdownURegexBold atIndex:0];
+                                forKey:[XGSMarkdownSymetricTag bold]
+                               atIndex:0];
     [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSFontAttributeName : _italicFont}]
-                                forKey:THMarkdownURegexItalic atIndex:1];
+                                forKey:[XGSMarkdownSymetricTag italic]
+                               atIndex:1];
 }
 
 
@@ -113,8 +114,8 @@ NSString* THMarkdownURegexBold = @"\\*\\*([^\\s].*?)\\*\\*"; /* "**xxx**" = xxx 
 {
     NSMutableAttributedString *mutAttrString = [input mutableCopy];
     
-    [self.tagProcessingBlocks enumerateKeysAndObjectsUsingBlock:^(NSString *pattern, TagProcessorBlockType block, BOOL *stop) {
-         [self parsePattern:pattern processingBlock:block input:mutAttrString];
+    [self.tagProcessingBlocks enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownSymetricTag *tag, TagProcessorBlockType block, BOOL *stop) {
+         [self parsePattern:tag.regexPattern processingBlock:block input:mutAttrString];
      }];
     return [mutAttrString copy];
 }
@@ -140,3 +141,4 @@ NSString* THMarkdownURegexBold = @"\\*\\*([^\\s].*?)\\*\\*"; /* "**xxx**" = xxx 
     }
 
 @end
+

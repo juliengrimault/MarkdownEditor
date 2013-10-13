@@ -28,7 +28,7 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
 	NSString *objectString;
 	if ([object isKindOfClass:[NSString class]])
 	{
-		objectString = object;
+		objectString = (NSString *)object;
 	}
 	else if ([object respondsToSelector:@selector(descriptionWithLocale:indent:)])
 	{

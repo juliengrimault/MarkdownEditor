@@ -15,10 +15,11 @@ typedef NSAttributedString*(^TagProcessorBlockType)(NSAttributedString*, NSTextC
 
 +(instancetype)sharedInstance;
 
-// keys are the regex for the tags and values are the NSAttributed string style
+// keys are the XGSMarkdownElement and values are the NSAttributed string style
 @property (nonatomic, strong, readonly) OrderedDictionary *tagStyles;
 
 @property (nonatomic, strong) UIFont *normalFont;
+
 
 - (NSAttributedString *)parseAttributedString:(NSAttributedString *)input;
 

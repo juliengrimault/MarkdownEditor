@@ -7,6 +7,7 @@
 //
 
 #import "XGSMarkdownInputAccessoryView.h"
+#import "XGSMarkdownSymetricTag.h"
 
 static const CGFloat kDistanceBetweenButtons = 8.0f;
 
@@ -55,12 +56,12 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
 
 - (void)makeBold:(id)sender
 {
-    [self.delegate markdownInputView:self didSelectPattern:@"****" insertionIndex:2];
+    [self.delegate markdownInputView:self didSelectMarkdownElement:[XGSMarkdownSymetricTag bold]];
 }
 
 - (void)makeItalic:(id)sender
 {
-    [self.delegate markdownInputView:self didSelectPattern:@"**" insertionIndex:1];
+    [self.delegate markdownInputView:self didSelectMarkdownElement:[XGSMarkdownSymetricTag italic]];
 }
 
 - (void)dismissKeyboard:(id)sender

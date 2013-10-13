@@ -8,6 +8,7 @@
 
 #import "XGSHighlightTextStorage.h"
 #import "OrderedDictionary.h"
+#import "XGSMarkdownSymetricTag.h"
 
 @interface XGSHighlightTextStorage()
 @property (nonatomic, strong) OrderedDictionary *tagStyles;
@@ -64,9 +65,6 @@
 
 
 #pragma mark - Syntax highlighting
-
-
-
 - (void)processEditing
 {
     NSRange paragaphRange = [self.string paragraphRangeForRange:self.editedRange];
@@ -78,8 +76,8 @@
 {
     [_backingStore setAttributes:[self normalAttributes] range:range];
     
-    [self.tagStyles enumerateKeysAndObjectsUsingBlock:^(NSString *pattern, NSDictionary *attributes, BOOL *stop) {
-        [self applyStyle:attributes forRegex:pattern inRange:range];
+    [self.tagStyles enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownSymetricTag *tag, NSDictionary *attributes, BOOL *stop) {
+        [self applyStyle:attributes forRegex:tag.regexPattern inRange:range];
     }];
 }
 
