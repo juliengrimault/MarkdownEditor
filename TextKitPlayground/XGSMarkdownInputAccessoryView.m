@@ -7,7 +7,7 @@
 //
 
 #import "XGSMarkdownInputAccessoryView.h"
-#import "XGSMarkdownSymetricTag.h"
+#import "XGSMarkdownTag.h"
 
 static const CGFloat kDistanceBetweenButtons = 8.0f;
 
@@ -56,7 +56,7 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
 {
     [self removeAllButtons];
     
-    for(XGSMarkdownSymetricTag *tag in markdownTags) {
+    for(XGSMarkdownTag *tag in markdownTags) {
         UIButton *b = [self createButtonWithTitle:tag.name target:@selector(insertMarkdown:)];
         _buttons[tag] = b;
     }
@@ -86,7 +86,7 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
 
 - (void)makeItalic:(id)sender
 {
-    [self.delegate markdownInputView:self didSelectMarkdownElement:[XGSMarkdownSymetricTag italic]];
+    [self.delegate markdownInputView:self didSelectMarkdownElement:[XGSMarkdownTag italic]];
 }
 
 - (void)dismissKeyboard:(id)sender
@@ -100,7 +100,7 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
     
     __block NSUInteger i = 0;
     __block CGFloat centerX = 0;
-    [self.buttons enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownSymetricTag *tag, UIButton *b, BOOL *stop) {
+    [self.buttons enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownTag *tag, UIButton *b, BOOL *stop) {
         [b sizeToFit];
         centerX +=  kDistanceBetweenButtons + b.bounds.size.width * 0.5f;
         b.center = CGPointMake(centerX, centerY);

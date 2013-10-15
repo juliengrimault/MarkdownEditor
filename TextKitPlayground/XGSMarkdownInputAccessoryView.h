@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class XGSMarkdownSymetricTag;
+@class XGSMarkdownTag;
 @class XGSMarkdownInputAccessoryView;
 
 @protocol XGSMarkdownInputViewDelegate
 - (void)markdownInputViewDidDismiss:(XGSMarkdownInputAccessoryView *)inputView;
-- (void)markdownInputView:(XGSMarkdownInputAccessoryView *)inputView didSelectMarkdownElement:(XGSMarkdownSymetricTag *)element;
+- (void)markdownInputView:(XGSMarkdownInputAccessoryView *)inputView didSelectMarkdownElement:(XGSMarkdownTag *)element;
 @end
 
 @interface XGSMarkdownInputAccessoryView : UIView

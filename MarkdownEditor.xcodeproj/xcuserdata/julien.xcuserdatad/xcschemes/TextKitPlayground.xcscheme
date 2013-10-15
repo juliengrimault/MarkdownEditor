@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F99DA4F51807F84C00176BE7"
-               BuildableName = "TextKitPlayground.app"
+               BuildableName = "MarkdownEditor.app"
                BlueprintName = "MarkdownEditor"
                ReferencedContainer = "container:MarkdownEditor.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F99DA5101807F84C00176BE7"
-               BuildableName = "TextKitPlaygroundTests.xctest"
+               BuildableName = "MarkdownEditorTests.xctest"
                BlueprintName = "MarkdownEditorTests"
                ReferencedContainer = "container:MarkdownEditor.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F99DA4F51807F84C00176BE7"
-            BuildableName = "TextKitPlayground.app"
+            BuildableName = "MarkdownEditor.app"
             BlueprintName = "MarkdownEditor"
             ReferencedContainer = "container:MarkdownEditor.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F99DA4F51807F84C00176BE7"
-            BuildableName = "TextKitPlayground.app"
+            BuildableName = "MarkdownEditor.app"
             BlueprintName = "MarkdownEditor"
             ReferencedContainer = "container:MarkdownEditor.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F99DA4F51807F84C00176BE7"
-            BuildableName = "TextKitPlayground.app"
+            BuildableName = "MarkdownEditor.app"
             BlueprintName = "MarkdownEditor"
             ReferencedContainer = "container:MarkdownEditor.xcodeproj">
          </BuildableReference>

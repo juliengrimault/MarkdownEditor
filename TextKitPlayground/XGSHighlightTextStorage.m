@@ -8,7 +8,7 @@
 
 #import "XGSHighlightTextStorage.h"
 #import "OrderedDictionary.h"
-#import "XGSMarkdownSymetricTag.h"
+#import "XGSMarkdownTag.h"
 
 @interface XGSHighlightTextStorage()
 @property (nonatomic, strong) OrderedDictionary *tagStyles;
@@ -76,8 +76,8 @@
 {
     [_backingStore setAttributes:[self normalAttributes] range:range];
     
-    [self.tagStyles enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownSymetricTag *tag, NSDictionary *attributes, BOOL *stop) {
-        [self applyStyle:attributes forRegex:tag.regexPattern inRange:range];
+    [self.tagStyles enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownTag *tag, NSDictionary *attributes, BOOL *stop) {
+        [self applyStyle:attributes forRegex:tag.regex inRange:range];
     }];
 }
 

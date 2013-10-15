@@ -8,7 +8,7 @@
 
 #import "XGSMarkupDefinition.h"
 #import "OrderedDictionary.h"
-#import "XGSMarkdownSymetricTag.h"
+#import "XGSMarkdownTag.h"
 
 @interface XGSMarkupDefinition()
 
@@ -73,23 +73,29 @@
 
 - (void)computeTags
 {
-    _markdownTags = @[[XGSMarkdownSymetricTag italic], [XGSMarkdownSymetricTag bold]];
+    _markdownTags = @[[XGSMarkdownTag italic], [XGSMarkdownTag bold], [XGSMarkdownTag underlined]];
     _tagStyles = [OrderedDictionary new];
     [_tagStyles insertObject:@{NSFontAttributeName : _italicFont}
                       forKey:_markdownTags[0]
                      atIndex:0];
+    [_tagStyles insertObject:@{NSUnderlineStyleAttributeName : @1}
+                      forKey:_markdownTags[2]
+                     atIndex:1];
     [_tagStyles insertObject:@{NSFontAttributeName : _boldFont}
                       forKey:_markdownTags[1]
-                     atIndex:1];
+                     atIndex:2];
 
     
     _tagProcessingBlocks = [OrderedDictionary new];
     [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSFontAttributeName : _boldFont}]
                                 forKey:_markdownTags[1]
                                atIndex:0];
+    [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSUnderlineStyleAttributeName : @1}]
+                      forKey:_markdownTags[2]
+                     atIndex:1];
     [_tagProcessingBlocks insertObject:[self tagProcessorForAttribute:@{NSFontAttributeName : _italicFont}]
                                 forKey:_markdownTags[0]
-                               atIndex:1];
+                               atIndex:2];
 }
 
 
@@ -103,7 +109,10 @@
         if (textRange.length>0)
         {
             NSMutableAttributedString* foundString = [[str attributedSubstringFromRange:textRange] mutableCopy];
-            [foundString setAttributes:attributes range:NSMakeRange(0,textRange.length)];
+            NSRange r = NSMakeRange(0,textRange.length);
+            [attributes enumerateKeysAndObjectsUsingBlock:^(NSString *attribute, id value, BOOL *stop) {
+                [foundString addAttribute:attribute value:value range:r];
+            }];
             return foundString;
         } else {
             return nil;
@@ -115,8 +124,8 @@
 {
     NSMutableAttributedString *mutAttrString = [input mutableCopy];
     
-    [self.tagProcessingBlocks enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownSymetricTag *tag, TagProcessorBlockType block, BOOL *stop) {
-         [self parsePattern:tag.regexPattern processingBlock:block input:mutAttrString];
+    [self.tagProcessingBlocks enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownTag *tag, TagProcessorBlockType block, BOOL *stop) {
+         [self parsePattern:tag.regex processingBlock:block input:mutAttrString];
      }];
     return [mutAttrString copy];
 }
