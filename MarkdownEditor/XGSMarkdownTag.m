@@ -48,45 +48,79 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    XGSMarkdownTag *element = [[XGSMarkdownTag allocWithZone:zone] initWithName:self.name
-                                                                partialPatterns:self.partialPatterns
-                                                                          regex:self.regex];
-    return element;
+    return self;
 }
 
 @end
 
 NSString* MarkdownRegexItalic = @"\\*([^\\s].*?)\\*";
+NSString* MarkdownNameItalic = @"Italic";
+
 NSString* MarkdownRegexBold = @"\\*\\*([^\\s].*?)\\*\\*";
+NSString* MarkdownNameBold = @"Bold";
+
 NSString* MarkdownRegexUnderlined = @"_([^\\s].*?)_";
+NSString* MarkdownNameUnderlined = @"Underlined";
+
 NSString* MarkdownRegexLink = @"\\[([^\\]]+)\\]\\(([^\\)]+)\\)";
+NSString* MarkdownNameLink = @"Link";
+
+static NSMutableDictionary *_tags;
 
 @implementation XGSMarkdownTag(Factory)
+
++ (void)load
+{
+    _tags = [NSMutableDictionary new];
+}
+
++ (instancetype)lazyLoad:(NSString *)name builderBlock:(XGSMarkdownTag *(^)(void))builderBlock
+{
+    XGSMarkdownTag *tag = _tags[name];
+    if (tag == nil) {
+        tag = builderBlock();
+        _tags[name] = tag;
+    }
+    return tag;
+}
+
 +(instancetype)italic
 {
-    return [[self alloc] initWithName:NSLocalizedString(@"Italic", nil)
-                      partialPatterns:@[@"*", @"*"]
-                                regex:MarkdownRegexItalic];
+    return [self lazyLoad:MarkdownNameItalic
+             builderBlock:^{
+                 return [[self alloc] initWithName:NSLocalizedString(MarkdownNameItalic, nil)
+                                   partialPatterns:@[@"*", @"*"]
+                                             regex:MarkdownRegexItalic];
+             }];
 }
 
 +(instancetype)bold
 {
-    return [[self alloc] initWithName:NSLocalizedString(@"Bold", nil)
-                      partialPatterns:@[@"**", @"**"]
-                                regex:MarkdownRegexBold];
+    return [self lazyLoad:MarkdownNameBold
+             builderBlock:^{
+                 return [[self alloc] initWithName:NSLocalizedString(MarkdownNameBold, nil)
+                                   partialPatterns:@[@"**", @"**"]
+                                             regex:MarkdownRegexBold];
+             }];
 }
 
 +(instancetype)underlined
 {
-    return [[self alloc] initWithName:NSLocalizedString(@"Underlined", nil)
-                      partialPatterns:@[@"_", @"_"]
-                                regex:MarkdownRegexUnderlined];
+    return [self lazyLoad:MarkdownNameUnderlined
+             builderBlock:^{
+                 return  [[self alloc] initWithName:NSLocalizedString(MarkdownNameUnderlined, nil)
+                                    partialPatterns:@[@"_", @"_"]
+                                              regex:MarkdownRegexUnderlined];
+             }];
 }
 
 +(instancetype)link
 {
-    return [[self alloc] initWithName:NSLocalizedString(@"Link", nil)
-                      partialPatterns:@[@"[", @"](", @")"]
-                                regex:MarkdownRegexLink];
+    return [self lazyLoad:MarkdownNameLink
+             builderBlock:^{
+                 return [[self alloc] initWithName:NSLocalizedString(MarkdownNameLink, nil)
+                                   partialPatterns:@[@"[", @"](", @")"]
+                                             regex:MarkdownRegexLink];
+             }];
 }
 @end
