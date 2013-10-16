@@ -7,11 +7,10 @@
 //
 
 #import "XGSHighlightTextStorage.h"
-#import "OrderedDictionary.h"
 #import "XGSMarkdownTag.h"
 
 @interface XGSHighlightTextStorage()
-@property (nonatomic, strong) OrderedDictionary *tagStyles;
+@property (nonatomic, copy) NSArray *tags;
 @property (nonatomic, strong) UIFont *normalFont;
 @end
 
@@ -21,11 +20,11 @@
 
 
 #pragma mark - NSTextStorage implementation
-- (id)initWithTagStyles:(OrderedDictionary *)tagStyles normalFont:(UIFont *)normalFont
+- (id)initWithTagStyles:(NSArray *)tags normalFont:(UIFont *)normalFont
 {
     self = [super init];
     if (self) {
-        _tagStyles = tagStyles;
+        _tags = [tags copy];
         _backingStore = [NSMutableAttributedString new];
         _normalFont = normalFont;
         _textColor = [UIColor darkTextColor];
@@ -76,9 +75,9 @@
 {
     [_backingStore setAttributes:[self normalAttributes] range:range];
     
-    [self.tagStyles enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownTag *tag, NSDictionary *attributes, BOOL *stop) {
-        [self applyStyle:attributes forRegex:tag.regex inRange:range];
-    }];
+    for (XGSMarkdownTag *tag in self.tags) {
+        [self applyStyle:tag.attributes forRegex:tag.regex inRange:range];
+    }
 }
 
 - (void)applyStyle:(NSDictionary *)attributes forRegex:(NSString *)pattern inRange:(NSRange)range

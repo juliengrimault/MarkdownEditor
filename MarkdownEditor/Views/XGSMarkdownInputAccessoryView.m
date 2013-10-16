@@ -84,11 +84,6 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
     }
 }
 
-- (void)makeItalic:(id)sender
-{
-    [self.delegate markdownInputView:self didSelectMarkdownElement:[XGSMarkdownTag italic]];
-}
-
 - (void)dismissKeyboard:(id)sender
 {
     [self.delegate markdownInputViewDidDismiss:self];

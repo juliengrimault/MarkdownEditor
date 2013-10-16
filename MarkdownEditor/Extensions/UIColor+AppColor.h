@@ -11,5 +11,6 @@
 @interface UIColor (AppColor)
 
 + (instancetype) xgs_greenColor;
++ (instancetype) xgs_highlightColor;
 + (instancetype) xgs_darkTextColor;
 @end

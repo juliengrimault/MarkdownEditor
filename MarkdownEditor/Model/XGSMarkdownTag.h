@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ This is the base class providing common data for all MarkdownTag implementation.
+ Subclass can add extra property and should override `attributes` to suit their needs.
+ */
 @interface XGSMarkdownTag : NSObject<NSCopying>
 
 @property (nonatomic, readonly, copy) NSString *name;
@@ -21,16 +25,8 @@
 /// the regex used to match this markdown element
 @property (nonatomic, readonly, copy) NSString *regex;
 
-- (BOOL)isEqualToMarkdownTag:(XGSMarkdownTag *)tag;
-@end
+// /!\ abstract property, subclass must implement this
+@property (nonatomic, readonly) NSDictionary *attributes;
 
-
-
-@interface XGSMarkdownTag(Factory)
-
-+(instancetype)italic;
-+(instancetype)bold;
-+(instancetype)underlined;
-+(instancetype)link;
 
 @end

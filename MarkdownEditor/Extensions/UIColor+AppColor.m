@@ -15,9 +15,13 @@
     return [UIColor colorWithRed:0.10 green:0.68 blue:0.40 alpha:1.0];
 }
 
++ (instancetype) xgs_highlightColor
+{
+    return [UIColor colorWithRed:0.10 green:0.68 blue:0.40 alpha:.2];
+}
+
 + (instancetype) xgs_darkTextColor
 {
     return [UIColor colorWithRed:0.13 green:0.13 blue:0.13 alpha:1.0];
 }
-
 @end

@@ -8,8 +8,7 @@
 
 #import "XGSTextViewController.h"
 #import "XGSHighlightTextStorage.h"
-#import "XGSMarkupDefinition.h"
-#import "XGSPreviewViewController.h"
+#import "XGSMarkdownDefinition.h"
 #import "XGSMarkdownInputAccessoryView.h"
 #import "UIColor+AppColor.h"
 #import "XGSMarkdownTag.h"
@@ -31,7 +30,7 @@
     [PSMenuItem installMenuHandlerForObject:self];
 }
 
-- (id)initWithMarkupProcessor:(XGSMarkupDefinition *)markupProcessor
+- (id)initWithMarkupProcessor:(XGSMarkdownDefinition *)markupProcessor
 {
     self = [super init];
     if (self) {
@@ -46,13 +45,12 @@
     self.view = [UIView new];
 
     [self setupTextView];
-    [self setupNavigationBarButton];
     [self addCustomMenuItems];
 }
 
     - (void)setupTextView
     {
-        self.textStorage = [[XGSHighlightTextStorage alloc] initWithTagStyles:self.markupProcessor.tagStyles normalFont:self.markupProcessor.normalFont];
+        self.textStorage = [[XGSHighlightTextStorage alloc] initWithTagStyles:self.markupProcessor.markdownTags normalFont:self.markupProcessor.normalFont];
         
         NSLayoutManager *layoutManager = [NSLayoutManager new];
         [self.textStorage addLayoutManager: layoutManager];
@@ -71,23 +69,6 @@
         inputAccessoryView.delegate = self;
         textView.inputAccessoryView = inputAccessoryView;
     }
-
-    - (void)setupNavigationBarButton
-    {
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Render", nil)
-                                                                   style:UIBarButtonItemStyleBordered
-                                                                  target:self
-                                                                  action:@selector(renderPreview:)];
-        self.navigationItem.rightBarButtonItem = button;
-    }
-
-        - (void)renderPreview:(id)sender
-        {
-            NSAttributedString *parsedText = [self.markupProcessor parseAttributedString:self.textStorage];
-            XGSPreviewViewController *previewVC = [[XGSPreviewViewController alloc] initWithText:parsedText];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:previewVC];
-            [self presentViewController:nav animated:YES completion:nil];
-        }
 
     - (void)addCustomMenuItems
     {
@@ -109,7 +90,7 @@
 {
     [super viewDidLoad];
     [self setupConstraints];
-    self.textView.text = NSLocalizedString(@"This is a demo of what you can do:\n1 * on each side of a word will make it *italic*.\n2 * on each side will make it **bold**.\n\nPretty cool no?",nil);
+    self.textView.text = NSLocalizedString(@"This is a demo of what you can do:\n1 * on each side of a word will make it *italic*.\n2 * on each side will make it **bold**.\n\n1 _ on each side of a word will _underline_ it\nYou can also =highlight stuff= by putting words between =.\n\nPretty cool no?",nil);
     [self startObservingKeyboardNotifications];
 }
 

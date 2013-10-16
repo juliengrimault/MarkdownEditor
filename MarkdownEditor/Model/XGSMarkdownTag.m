@@ -7,19 +7,24 @@
 //
 
 #import "XGSMarkdownTag.h"
+#import "XGSMarkdownTag_Private.h"
 
+#define NSUINT_BIT (CHAR_BIT * sizeof(NSUInteger))
+#define NSUINTROTATE(val, howmuch) ((((NSUInteger)val) << howmuch) | (((NSUInteger)val) >> (NSUINT_BIT - howmuch)))
 
 @implementation XGSMarkdownTag
 
 - (instancetype)initWithName:(NSString *)name
              partialPatterns:(NSArray *)patterns
                        regex:(NSString *)regexPattern
+                  attributes:(NSDictionary *)attributes
 {
     self = [super init];
     if (self) {
         _name = [name copy];
         _partialPatterns = [patterns copy];
         _regex = [regexPattern copy];
+        _extraAttributes = [attributes copy];
     }
     return self;
 }
@@ -31,19 +36,29 @@
 
 - (BOOL)isEqual:(id)object
 {
-    if (![object isKindOfClass:[XGSMarkdownTag class]]) return NO;
+    if (object == self) return YES;
+    
+    if (!object || ![object isKindOfClass:[XGSMarkdownTag class]]) return NO;
     
     return [self isEqualToMarkdownTag:(XGSMarkdownTag *)object];
 }
 
 - (BOOL)isEqualToMarkdownTag:(XGSMarkdownTag *)tag
 {
-    return [_partialPatterns isEqualToArray:tag.partialPatterns] && [_regex isEqualToString:tag.regex];
+    if (tag == self) return YES;
+    
+    return [_name isEqualToString:tag.name] &&
+           [_partialPatterns isEqualToArray:tag.partialPatterns] &&
+           [_regex isEqualToString:tag.regex] &&
+           [self.attributes isEqualToDictionary:tag.attributes];
 }
 
 - (NSUInteger)hash
 {
-    return [_partialPatterns hash] + 7 * [_regex hash];
+    return NSUINTROTATE([_partialPatterns hash], NSUINT_BIT / 2) ^
+    NSUINTROTATE([_regex hash], NSUINT_BIT / 4) ^
+    NSUINTROTATE([_name hash], NSUINT_BIT / 8) ^
+    NSUINTROTATE([self.attributes hash], NSUINT_BIT / 16);
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -51,76 +66,9 @@
     return self;
 }
 
-@end
-
-NSString* MarkdownRegexItalic = @"\\*([^\\s].*?)\\*";
-NSString* MarkdownNameItalic = @"Italic";
-
-NSString* MarkdownRegexBold = @"\\*\\*([^\\s].*?)\\*\\*";
-NSString* MarkdownNameBold = @"Bold";
-
-NSString* MarkdownRegexUnderlined = @"_([^\\s].*?)_";
-NSString* MarkdownNameUnderlined = @"Underlined";
-
-NSString* MarkdownRegexLink = @"\\[([^\\]]+)\\]\\(([^\\)]+)\\)";
-NSString* MarkdownNameLink = @"Link";
-
-static NSMutableDictionary *_tags;
-
-@implementation XGSMarkdownTag(Factory)
-
-+ (void)load
+- (NSDictionary *)attributes
 {
-    _tags = [NSMutableDictionary new];
+    return _extraAttributes;
 }
 
-+ (instancetype)lazyLoad:(NSString *)name builderBlock:(XGSMarkdownTag *(^)(void))builderBlock
-{
-    XGSMarkdownTag *tag = _tags[name];
-    if (tag == nil) {
-        tag = builderBlock();
-        _tags[name] = tag;
-    }
-    return tag;
-}
-
-+(instancetype)italic
-{
-    return [self lazyLoad:MarkdownNameItalic
-             builderBlock:^{
-                 return [[self alloc] initWithName:NSLocalizedString(MarkdownNameItalic, nil)
-                                   partialPatterns:@[@"*", @"*"]
-                                             regex:MarkdownRegexItalic];
-             }];
-}
-
-+(instancetype)bold
-{
-    return [self lazyLoad:MarkdownNameBold
-             builderBlock:^{
-                 return [[self alloc] initWithName:NSLocalizedString(MarkdownNameBold, nil)
-                                   partialPatterns:@[@"**", @"**"]
-                                             regex:MarkdownRegexBold];
-             }];
-}
-
-+(instancetype)underlined
-{
-    return [self lazyLoad:MarkdownNameUnderlined
-             builderBlock:^{
-                 return  [[self alloc] initWithName:NSLocalizedString(MarkdownNameUnderlined, nil)
-                                    partialPatterns:@[@"_", @"_"]
-                                              regex:MarkdownRegexUnderlined];
-             }];
-}
-
-+(instancetype)link
-{
-    return [self lazyLoad:MarkdownNameLink
-             builderBlock:^{
-                 return [[self alloc] initWithName:NSLocalizedString(MarkdownNameLink, nil)
-                                   partialPatterns:@[@"[", @"](", @")"]
-                                             regex:MarkdownRegexLink];
-             }];
-}
 @end

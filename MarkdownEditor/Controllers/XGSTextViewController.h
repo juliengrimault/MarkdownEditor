@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class XGSMarkupDefinition;
+@class XGSMarkdownDefinition;
 
 @interface XGSTextViewController : UIViewController
 
-@property (strong, nonatomic) XGSMarkupDefinition *markupProcessor;
+@property (strong, nonatomic, readonly) XGSMarkdownDefinition *markupProcessor;
 
-- (id)initWithMarkupProcessor:(XGSMarkupDefinition *)markupProcessor;
+- (id)initWithMarkupProcessor:(XGSMarkdownDefinition *)markupProcessor;
 @end
