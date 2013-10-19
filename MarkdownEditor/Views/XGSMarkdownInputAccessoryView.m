@@ -8,10 +8,13 @@
 
 #import "XGSMarkdownInputAccessoryView.h"
 #import "XGSMarkdownTag.h"
+#import "XGSIconCircularButton.h"
+#import "XGSMarkdownIcon.h"
 
 static const CGFloat kDistanceBetweenButtons = 8.0f;
 
 @interface XGSMarkdownInputAccessoryView()
+@property (nonatomic, strong) UIToolbar *blurBar;//used only because it blurs stuff that is underneath
 @property (nonatomic, strong) NSMutableDictionary *buttons;
 @property (strong, nonatomic) UIButton *dismissKeyboardButton;
 @end
@@ -38,8 +41,12 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
 
 - (void)commonInit
 {
-    _buttons = [NSMutableDictionary new];
+    self.backgroundColor = [UIColor clearColor];
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _blurBar = [[UIToolbar alloc] initWithFrame:self.frame];
+    _blurBar.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self addSubview:_blurBar];
+    _buttons = [NSMutableDictionary new];
     self.dismissKeyboardButton = [self createButtonWithTitle:NSLocalizedString(@"Dismiss", nil) target:@selector(dismissKeyboard:)];
 }
 
@@ -57,10 +64,21 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
     [self removeAllButtons];
     
     for(XGSMarkdownTag *tag in markdownTags) {
-        UIButton *b = [self createButtonWithTitle:tag.name target:@selector(insertMarkdown:)];
+        UIButton *b = [self createMarkdownButtonForTag:tag];
         _buttons[tag] = b;
     }
 }
+
+    - (XGSIconCircularButton *)createMarkdownButtonForTag:(XGSMarkdownTag *)tag
+    {
+        FAIcon tagIcon = iconForMarkdownTag(tag.type);
+        XGSIconCircularButton *markdownButton = [XGSIconCircularButton buttonWithIcon:tagIcon];
+        [markdownButton addTarget:self
+                           action:@selector(insertMarkdown:)
+                 forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:markdownButton];
+        return markdownButton;
+    }
 
     - (void)removeAllButtons
     {
@@ -96,7 +114,9 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
     __block NSUInteger i = 0;
     __block CGFloat centerX = 0;
     [self.buttons enumerateKeysAndObjectsUsingBlock:^(XGSMarkdownTag *tag, UIButton *b, BOOL *stop) {
-        [b sizeToFit];
+        CGSize suggestedSize = [b sizeThatFits:CGSizeZero];
+        CGFloat side = MAX(suggestedSize.width, suggestedSize.height);
+        [b setBounds:CGRectMake(0, 0, side, side)];
         centerX +=  kDistanceBetweenButtons + b.bounds.size.width * 0.5f;
         b.center = CGPointMake(centerX, centerY);
         centerX += b.bounds.size.width * 0.5f;

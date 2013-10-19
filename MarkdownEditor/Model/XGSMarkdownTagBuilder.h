@@ -10,6 +10,7 @@
 #import "XGSMarkdownTagType.h"
 #import "XGSMarkdownTag.h"
 
+
 @interface XGSMarkdownTagBuilder : NSObject
 
 @property (strong, nonatomic) UIFont *baseFont;

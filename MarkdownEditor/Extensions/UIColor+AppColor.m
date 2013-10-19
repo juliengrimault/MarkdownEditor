@@ -17,7 +17,7 @@
 
 + (instancetype) xgs_highlightColor
 {
-    return [UIColor colorWithRed:0.10 green:0.68 blue:0.40 alpha:.2];
+    return [[self xgs_greenColor] colorWithAlphaComponent:0.2];
 }
 
 + (instancetype) xgs_darkTextColor

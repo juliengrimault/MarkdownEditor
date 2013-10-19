@@ -30,6 +30,11 @@
 		F9AA4673180E0F70009B193A /* XGSMarkdownInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4671180E0F70009B193A /* XGSMarkdownInputAccessoryView.m */; };
 		F9AA467B180E11DB009B193A /* XGSMarkdownTagTrait.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA467A180E11DB009B193A /* XGSMarkdownTagTrait.m */; };
 		F9AA467E180E12FD009B193A /* XGSMarkdownTagBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA467D180E12FD009B193A /* XGSMarkdownTagBuilder.m */; };
+		F9C8BAF01812CF6B002BCCE7 /* XGSIconCircularButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BAEF1812CF6B002BCCE7 /* XGSIconCircularButton.m */; };
+		F9C8BAF21812D5BB002BCCE7 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9C8BAF11812D5BA002BCCE7 /* fontawesome-webfont.ttf */; };
+		F9C8BAF51812D67C002BCCE7 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BAF41812D67C002BCCE7 /* UIFont+FontAwesome.m */; };
+		F9C8BAF81812D69E002BCCE7 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BAF71812D69E002BCCE7 /* NSString+FontAwesome.m */; };
+		F9C8BAFE1812EBC0002BCCE7 /* XGSMarkdownIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BAFD1812EBC0002BCCE7 /* XGSMarkdownIcon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +88,15 @@
 		F9AA467D180E12FD009B193A /* XGSMarkdownTagBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSMarkdownTagBuilder.m; sourceTree = "<group>"; };
 		F9AA467F180E133C009B193A /* XGSMarkdownTagType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGSMarkdownTagType.h; sourceTree = "<group>"; };
 		F9AA4680180E1A3F009B193A /* XGSMarkdownTag_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGSMarkdownTag_Private.h; sourceTree = "<group>"; };
+		F9C8BAEE1812CF6B002BCCE7 /* XGSIconCircularButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSIconCircularButton.h; sourceTree = "<group>"; };
+		F9C8BAEF1812CF6B002BCCE7 /* XGSIconCircularButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSIconCircularButton.m; sourceTree = "<group>"; };
+		F9C8BAF11812D5BA002BCCE7 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		F9C8BAF31812D67C002BCCE7 /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		F9C8BAF41812D67C002BCCE7 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		F9C8BAF61812D69E002BCCE7 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		F9C8BAF71812D69E002BCCE7 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		F9C8BAFC1812EBC0002BCCE7 /* XGSMarkdownIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSMarkdownIcon.h; sourceTree = "<group>"; };
+		F9C8BAFD1812EBC0002BCCE7 /* XGSMarkdownIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSMarkdownIcon.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +164,7 @@
 				F9AA4660180E0F6B009B193A /* Model */,
 				F9AA466D180E0F70009B193A /* Views */,
 				F99DA50B1807F84C00176BE7 /* Images.xcassets */,
+				F9C8BAF11812D5BA002BCCE7 /* fontawesome-webfont.ttf */,
 				F99DA5001807F84C00176BE7 /* Supporting Files */,
 			);
 			path = MarkdownEditor;
@@ -198,6 +213,10 @@
 		F9AA465C180E0F63009B193A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F9C8BAF61812D69E002BCCE7 /* NSString+FontAwesome.h */,
+				F9C8BAF71812D69E002BCCE7 /* NSString+FontAwesome.m */,
+				F9C8BAF31812D67C002BCCE7 /* UIFont+FontAwesome.h */,
+				F9C8BAF41812D67C002BCCE7 /* UIFont+FontAwesome.m */,
 				F9AA465D180E0F63009B193A /* UIColor+AppColor.h */,
 				F9AA465E180E0F63009B193A /* UIColor+AppColor.m */,
 				F9317FCD180ED9780047195F /* NSDictionary+XGSMerge.h */,
@@ -225,6 +244,8 @@
 				F9AA466F180E0F70009B193A /* PSMenuItem.m */,
 				F9AA4670180E0F70009B193A /* XGSMarkdownInputAccessoryView.h */,
 				F9AA4671180E0F70009B193A /* XGSMarkdownInputAccessoryView.m */,
+				F9C8BAEE1812CF6B002BCCE7 /* XGSIconCircularButton.h */,
+				F9C8BAEF1812CF6B002BCCE7 /* XGSIconCircularButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +261,8 @@
 				F9AA4680180E1A3F009B193A /* XGSMarkdownTag_Private.h */,
 				F9AA4679180E11DB009B193A /* XGSMarkdownTagTrait.h */,
 				F9AA467A180E11DB009B193A /* XGSMarkdownTagTrait.m */,
+				F9C8BAFC1812EBC0002BCCE7 /* XGSMarkdownIcon.h */,
+				F9C8BAFD1812EBC0002BCCE7 /* XGSMarkdownIcon.m */,
 			);
 			name = Tag;
 			sourceTree = "<group>";
@@ -322,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C8BAF21812D5BB002BCCE7 /* fontawesome-webfont.ttf in Resources */,
 				F99DA5041807F84C00176BE7 /* InfoPlist.strings in Resources */,
 				F99DA50C1807F84C00176BE7 /* Images.xcassets in Resources */,
 			);
@@ -379,12 +403,16 @@
 				F9AA465B180E0F59009B193A /* XGSTextViewController.m in Sources */,
 				F9AA466A180E0F6B009B193A /* XGSHighlightTextStorage.m in Sources */,
 				F99DA5061807F84C00176BE7 /* main.m in Sources */,
+				F9C8BAF01812CF6B002BCCE7 /* XGSIconCircularButton.m in Sources */,
+				F9C8BAF81812D69E002BCCE7 /* NSString+FontAwesome.m in Sources */,
 				F9AA4672180E0F70009B193A /* PSMenuItem.m in Sources */,
 				F9AA466C180E0F6B009B193A /* XGSMarkdownDefinition.m in Sources */,
 				F9317FCF180ED9780047195F /* NSDictionary+XGSMerge.m in Sources */,
 				F9AA466B180E0F6B009B193A /* XGSMarkdownTag.m in Sources */,
+				F9C8BAFE1812EBC0002BCCE7 /* XGSMarkdownIcon.m in Sources */,
 				F9AA465F180E0F63009B193A /* UIColor+AppColor.m in Sources */,
 				F9AA467E180E12FD009B193A /* XGSMarkdownTagBuilder.m in Sources */,
+				F9C8BAF51812D67C002BCCE7 /* UIFont+FontAwesome.m in Sources */,
 				F9AA4673180E0F70009B193A /* XGSMarkdownInputAccessoryView.m in Sources */,
 				F9AA4659180E0F59009B193A /* XGSAppDelegate.m in Sources */,
 			);
