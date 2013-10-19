@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34BEC9FEEC5A47A9AD76EA73 /* libPods-MarkdownEditorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02FF12D548AB40A1B69FA811 /* libPods-MarkdownEditorTests.a */; };
 		F9317FCF180ED9780047195F /* NSDictionary+XGSMerge.m in Sources */ = {isa = PBXBuildFile; fileRef = F9317FCE180ED9780047195F /* NSDictionary+XGSMerge.m */; };
 		F99DA4FA1807F84C00176BE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA4F91807F84C00176BE7 /* Foundation.framework */; };
 		F99DA4FC1807F84C00176BE7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA4FB1807F84C00176BE7 /* CoreGraphics.framework */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02FF12D548AB40A1B69FA811 /* libPods-MarkdownEditorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MarkdownEditorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1341FAFEEA944FE990DE970 /* Pods-MarkdownEditorTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarkdownEditorTests.xcconfig"; path = "Pods/Pods-MarkdownEditorTests.xcconfig"; sourceTree = "<group>"; };
 		F9317FCD180ED9780047195F /* NSDictionary+XGSMerge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+XGSMerge.h"; sourceTree = "<group>"; };
 		F9317FCE180ED9780047195F /* NSDictionary+XGSMerge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+XGSMerge.m"; sourceTree = "<group>"; };
 		F99DA4F61807F84C00176BE7 /* MarkdownEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarkdownEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +103,7 @@
 				F99DA5131807F84C00176BE7 /* XCTest.framework in Frameworks */,
 				F99DA5151807F84C00176BE7 /* UIKit.framework in Frameworks */,
 				F99DA5141807F84C00176BE7 /* Foundation.framework in Frameworks */,
+				34BEC9FEEC5A47A9AD76EA73 /* libPods-MarkdownEditorTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +117,7 @@
 				F99DA5181807F84C00176BE7 /* MarkdownEditorTests */,
 				F99DA4F81807F84C00176BE7 /* Frameworks */,
 				F99DA4F71807F84C00176BE7 /* Products */,
+				C1341FAFEEA944FE990DE970 /* Pods-MarkdownEditorTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +137,7 @@
 				F99DA4FB1807F84C00176BE7 /* CoreGraphics.framework */,
 				F99DA4FD1807F84C00176BE7 /* UIKit.framework */,
 				F99DA5121807F84C00176BE7 /* XCTest.framework */,
+				02FF12D548AB40A1B69FA811 /* libPods-MarkdownEditorTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -262,9 +268,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F99DA5251807F84C00176BE7 /* Build configuration list for PBXNativeTarget "MarkdownEditorTests" */;
 			buildPhases = (
+				E9888655F01A42F796259C3B /* Check Pods Manifest.lock */,
 				F99DA50D1807F84C00176BE7 /* Sources */,
 				F99DA50E1807F84C00176BE7 /* Frameworks */,
 				F99DA50F1807F84C00176BE7 /* Resources */,
+				E144935057A64C47925A667A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -328,6 +336,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E144935057A64C47925A667A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-MarkdownEditorTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9888655F01A42F796259C3B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F99DA4F21807F84C00176BE7 /* Sources */ = {
@@ -487,21 +528,22 @@
 		};
 		F99DA5261807F84C00176BE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1341FAFEEA944FE990DE970 /* Pods-MarkdownEditorTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TextKitPlayground.app/TextKitPlayground";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MarkdownEditor.app/MarkdownEditor";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TextKitPlayground/TextKitPlayground-Prefix.pch";
+				GCC_PREFIX_HEADER = "MarkdownEditor/MarkdownEditor-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "TextKitPlaygroundTests/MarkdownEditorTests-Info.plist";
+				INFOPLIST_FILE = "MarkdownEditorTests/MarkdownEditorTests-Info.plist";
 				PRODUCT_NAME = MarkdownEditorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -510,17 +552,18 @@
 		};
 		F99DA5271807F84C00176BE7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1341FAFEEA944FE990DE970 /* Pods-MarkdownEditorTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TextKitPlayground.app/TextKitPlayground";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MarkdownEditor.app/MarkdownEditor";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TextKitPlayground/TextKitPlayground-Prefix.pch";
-				INFOPLIST_FILE = "TextKitPlaygroundTests/MarkdownEditorTests-Info.plist";
+				GCC_PREFIX_HEADER = "MarkdownEditor/MarkdownEditor-Prefix.pch";
+				INFOPLIST_FILE = "MarkdownEditorTests/MarkdownEditorTests-Info.plist";
 				PRODUCT_NAME = MarkdownEditorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
