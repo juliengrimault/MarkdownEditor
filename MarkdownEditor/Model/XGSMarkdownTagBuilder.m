@@ -75,7 +75,8 @@ NSString* MarkdownNameLink = @"Link";
 {
     return [self lazyLoad:XGSMarkdownTagItalic
              builderBlock:^{
-                 return [[XGSMarkdownTagTrait alloc] initWithName:NSLocalizedString(MarkdownNameItalic, nil)
+                 return [[XGSMarkdownTagTrait alloc] initWithType:XGSMarkdownTagItalic
+                                                             name:NSLocalizedString(MarkdownNameItalic, nil)
                                                   partialPatterns:@[@"*", @"*"]
                                                             regex:MarkdownRegexItalic
                                                          baseFont:self.baseFont
@@ -87,7 +88,8 @@ NSString* MarkdownNameLink = @"Link";
 {
     return [self lazyLoad:XGSMarkdownTagBold
              builderBlock:^{
-                 return [[XGSMarkdownTagTrait alloc] initWithName:NSLocalizedString(MarkdownNameBold, nil)
+                 return [[XGSMarkdownTagTrait alloc] initWithType:XGSMarkdownTagBold
+                                                            name:NSLocalizedString(MarkdownNameBold, nil)
                                                   partialPatterns:@[@"**", @"**"]
                                                             regex:MarkdownRegexBold
                                                          baseFont:self.baseFont
@@ -100,7 +102,8 @@ NSString* MarkdownNameLink = @"Link";
     return [self lazyLoad:XGSMarkdownTagUnderlined
              builderBlock:^{
                  NSDictionary *attributes = [@{ NSUnderlineStyleAttributeName: @1 } xgs_merge:extraAttributes];
-                 return  [[XGSMarkdownTag alloc] initWithName:NSLocalizedString(MarkdownNameUnderlined, nil)
+                 return  [[XGSMarkdownTag alloc] initWithType:XGSMarkdownTagUnderlined
+                                                        name:NSLocalizedString(MarkdownNameUnderlined, nil)
                                               partialPatterns:@[@"_", @"_"]
                                                         regex:MarkdownRegexUnderlined
                                                    attributes:attributes];
@@ -112,7 +115,8 @@ NSString* MarkdownNameLink = @"Link";
     return [self lazyLoad:XGSMarkdownTagHighlighted
              builderBlock:^{
                  NSDictionary *attributes =[@{ NSBackgroundColorAttributeName: [self highlightColor] } xgs_merge:extraAttributes];
-                 return  [[XGSMarkdownTag alloc] initWithName:NSLocalizedString(MarkdownNameHighlighted, nil)
+                 return  [[XGSMarkdownTag alloc] initWithType:XGSMarkdownTagHighlighted
+                                                        name:NSLocalizedString(MarkdownNameHighlighted, nil)
                                               partialPatterns:@[@"=", @"="]
                                                         regex:MarkdownRegexHighlighted
                                                    attributes:attributes];

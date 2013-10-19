@@ -14,13 +14,15 @@
 @property (nonatomic, readonly) UIFont *baseFont;
 @property (nonatomic, readonly) UIFontDescriptorSymbolicTraits trait;
 
-- (instancetype)initWithName:(NSString *)name
+- (instancetype)initWithType:(XGSMarkdownTagType)type
+                        name:(NSString *)name
              partialPatterns:(NSArray *)patterns
                        regex:(NSString *)regexPattern
                     baseFont:(UIFont *)font
                        trait:(UIFontDescriptorSymbolicTraits)trait;
 
-- (instancetype)initWithName:(NSString *)name
+- (instancetype)initWithType:(XGSMarkdownTagType)type
+                        name:(NSString *)name
              partialPatterns:(NSArray *)patterns
                        regex:(NSString *)regexPattern
                     baseFont:(UIFont *)font

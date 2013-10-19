@@ -13,23 +13,35 @@
     NSDictionary *_attributes;
 }
 
-- (instancetype)initWithName:(NSString *)name
+- (instancetype)initWithType:(XGSMarkdownTagType)type
+                        name:(NSString *)name
              partialPatterns:(NSArray *)patterns
                        regex:(NSString *)regexPattern
                     baseFont:(UIFont *)font
                        trait:(UIFontDescriptorSymbolicTraits)trait
 {
-    return [self initWithName:name partialPatterns:patterns regex:regexPattern baseFont:font trait:trait extraAttributes:nil];
+    return [self initWithType:type
+                         name:name
+              partialPatterns:patterns
+                        regex:regexPattern
+                     baseFont:font
+                        trait:trait
+              extraAttributes:nil];
 }
 
-- (instancetype)initWithName:(NSString *)name
+- (instancetype)initWithType:(XGSMarkdownTagType)type
+                        name:(NSString *)name
              partialPatterns:(NSArray *)patterns
                        regex:(NSString *)regexPattern
                     baseFont:(UIFont *)font
                        trait:(UIFontDescriptorSymbolicTraits)trait
              extraAttributes:(NSDictionary *)extraAttributes
 {
-    self = [super initWithName:name partialPatterns:patterns regex:regexPattern attributes:extraAttributes];
+    self = [super initWithType:type
+                          name:name
+               partialPatterns:patterns
+                         regex:regexPattern
+                    attributes:extraAttributes];
     if (self) {
         _baseFont = font;
         _trait = trait;

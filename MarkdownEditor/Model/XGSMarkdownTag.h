@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XGSMarkdownTagType.h"
 
 /**
  This is the base class providing common data for all MarkdownTag implementation.
  Subclass can add extra property and should override `attributes` to suit their needs.
  */
 @interface XGSMarkdownTag : NSObject<NSCopying>
+
+@property (nonatomic, readonly) XGSMarkdownTagType type;
 
 @property (nonatomic, readonly, copy) NSString *name;
 

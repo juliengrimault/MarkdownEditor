@@ -14,13 +14,15 @@
 
 @implementation XGSMarkdownTag
 
-- (instancetype)initWithName:(NSString *)name
+- (instancetype)initWithType:(XGSMarkdownTagType)type
+                        name:(NSString *)name
              partialPatterns:(NSArray *)patterns
                        regex:(NSString *)regexPattern
                   attributes:(NSDictionary *)attributes
 {
     self = [super init];
     if (self) {
+        _type = type;
         _name = [name copy];
         _partialPatterns = [patterns copy];
         _regex = [regexPattern copy];
@@ -47,7 +49,8 @@
 {
     if (tag == self) return YES;
     
-    return [_name isEqualToString:tag.name] &&
+    return _type == tag.type &&
+           [_name isEqualToString:tag.name] &&
            [_partialPatterns isEqualToArray:tag.partialPatterns] &&
            [_regex isEqualToString:tag.regex] &&
            [self.attributes isEqualToDictionary:tag.attributes];

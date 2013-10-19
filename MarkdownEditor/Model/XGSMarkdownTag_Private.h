@@ -12,7 +12,8 @@
 
 @property (strong, nonatomic, readonly) NSDictionary *extraAttributes;
 
-- (instancetype)initWithName:(NSString *)name
+- (instancetype)initWithType:(XGSMarkdownTagType)type
+                        name:(NSString *)name
              partialPatterns:(NSArray *)patterns
                        regex:(NSString *)regexPattern
                   attributes:(NSDictionary *)attributes;
