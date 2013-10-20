@@ -59,13 +59,13 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
         return b;
     }
 
-- (void)setMarkdownTags:(NSArray *)markdownTags
+- (void)setShortcuts:(NSArray *)shortcuts
 {
     [self removeAllButtons];
     
-    for(XGSMarkdownTag *tag in markdownTags) {
-        UIButton *b = [self createMarkdownButtonForTag:tag];
-        _buttons[tag] = b;
+    for(id shortcut in shortcuts) {
+        UIButton *b = [self createMarkdownButtonForTag:shortcut];
+        _buttons[shortcut] = b;
     }
 }
 
@@ -88,7 +88,7 @@ static const CGFloat kDistanceBetweenButtons = 8.0f;
         [_buttons removeAllObjects];
     }
 
-- (NSArray *)markdownTags
+- (NSArray *)shortcuts
 {
     return [_buttons allKeys];
 }

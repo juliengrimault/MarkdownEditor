@@ -13,8 +13,8 @@
 #import "UIColor+AppColor.h"
 #import "XGSMarkdownTag.h"
 #import "PSMenuItem.h"
-
-@interface XGSTextViewController ()<XGSMarkdownInputViewDelegate>
+#import "XGSMarkdownInsertionController.h"
+@interface XGSTextViewController ()
 @property (weak, nonatomic) UITextView *textView;
 @property (nonatomic, strong) NSTextStorage *textStorage;
 @property (nonatomic, strong) NSLayoutConstraint *keyboardHeight;
@@ -64,9 +64,9 @@
         [self.view addSubview:self.textView];
         
         XGSMarkdownInputAccessoryView *inputAccessoryView = [[XGSMarkdownInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
-        inputAccessoryView.markdownTags = self.markupProcessor.markdownTags;
+        inputAccessoryView.shortcuts = self.markupProcessor.markdownTags;
         inputAccessoryView.tintColor = [UIColor xgs_greenColor];
-        inputAccessoryView.delegate = self;
+        inputAccessoryView.delegate = self.markdownInsertionController;
         textView.inputAccessoryView = inputAccessoryView;
     }
 
@@ -82,7 +82,7 @@
         - (UIMenuItem *)menuItemForMarkdownTag:(XGSMarkdownTag *)tag
         {
             return [[PSMenuItem alloc] initWithTitle:tag.name block:^{
-                [self insertMarkdownTag:tag];
+                [self.markdownInsertionController insertMarkdownTag:tag];
             }];
         }
 
@@ -120,6 +120,14 @@
                                                             constant:0];
         [self.view addConstraint:self.keyboardHeight];
     }
+
+- (XGSMarkdownInsertionController *)markdownInsertionController
+{
+    if (_markdownInsertionController == nil) {
+        _markdownInsertionController = [[XGSMarkdownInsertionController alloc] initWithTextStorage:self.textStorage textView:self.textView];
+    }
+    return _markdownInsertionController;
+}
 
 #pragma mark - Keyboard Notifications
 - (void)startObservingKeyboardNotifications
@@ -165,61 +173,6 @@
     {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-    }
-
-#pragma mark - XGSMarkdownInputViewDelegate
-- (void)markdownInputViewDidDismiss:(XGSMarkdownInputAccessoryView *)inputView
-{
-    [self.textView resignFirstResponder];
-}
-
-- (void)markdownInputView:(XGSMarkdownInputAccessoryView *)inputView didSelectMarkdownElement:(XGSMarkdownTag *)element
-{
-    [self insertMarkdownTag:element];
-}
-
-- (void)insertMarkdownTag:(XGSMarkdownTag *)tag
-{
-    NSRange selectedRange = self.textView.selectedRange;
-    NSAttributedString *insertBefore = [[NSAttributedString alloc] initWithString:tag.partialPatterns[0]];
-    NSAttributedString *insertAfter = [self endOfPattern:tag];
-    
-    // the order in which we insert the 2 segments of the pattern is important - we must insert right part of the pattern first
-    // in order to not shift the letters
-    [self insertEndOfPattern:insertAfter];
-    
-    [self.textStorage insertAttributedString:insertBefore
-                                     atIndex:selectedRange.location];
-    
-    self.textView.selectedRange = NSMakeRange(selectedRange.location + insertBefore.string.length, 0);
-}
-
-    - (NSAttributedString *)endOfPattern:(XGSMarkdownTag *)tag
-    {
-        NSAttributedString *insertAfter = nil;
-        if (tag.partialPatterns.count < 1) return insertAfter;
-        
-        NSMutableArray *restPartialPatterns = [tag.partialPatterns mutableCopy];
-        [restPartialPatterns removeObjectAtIndex:0];
-        NSString *restPattern = [restPartialPatterns componentsJoinedByString:@""];
-        insertAfter = [[NSAttributedString alloc] initWithString:restPattern];
-        
-        return insertAfter;
-    }
-
-    - (void)insertEndOfPattern:(NSAttributedString *)insertAfter
-    {
-        if (insertAfter != nil)
-        {
-            NSUInteger insertionEnd = NSMaxRange(self.textView.selectedRange);
-            if (insertionEnd == self.textStorage.string.length)
-            {
-                [self.textStorage appendAttributedString:insertAfter];
-            } else {
-                [self.textStorage insertAttributedString:insertAfter
-                                                 atIndex:insertionEnd];
-            }
-        }
     }
 
 @end

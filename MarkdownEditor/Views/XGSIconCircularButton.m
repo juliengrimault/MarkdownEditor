@@ -25,11 +25,10 @@
     return (CAShapeLayer *)self.layer;
 }
 
-+ (instancetype)buttonWithIcon:(FAIcon)icon
++ (instancetype)buttonWithTitle:(NSString *)title
 {
-    
     XGSIconCircularButton *b = [[self alloc] initWithFrame:CGRectZero];
-    [b setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
+    [b setTitle:title forState:UIControlStateNormal];
     return b;
 }
 
@@ -45,7 +44,6 @@
 - (void)commonInit
 {
     [self configureCircleLayer];
-    self.titleLabel.font = [UIFont fontAwesomeFontOfSize:15.0];
 }
 
 - (void)tintColorDidChange
@@ -88,4 +86,14 @@
     [self configureCircleLayer];
 }
 
+@end
+
+@implementation XGSIconCircularButton(FAIcon)
+
++ (instancetype)buttonWithIcon:(FAIcon)icon
+{
+    XGSIconCircularButton *b = [self buttonWithTitle:[NSString fontAwesomeIconStringForEnum:icon]];
+    [b.titleLabel setFont:[UIFont fontAwesomeFontOfSize:15.0]];
+    return b;
+}
 @end

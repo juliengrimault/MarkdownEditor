@@ -22,7 +22,7 @@
 //the pattern of the tag-  all the partial patterns put together
 @property (nonatomic, readonly) NSString *pattern;
 
-//array of NSNumber indicating where the text should be inserted in the pattern
+// array of NSString * holding the different parts of the tag
 @property (nonatomic, readonly, copy) NSArray *partialPatterns;
 
 /// the regex used to match this markdown element

@@ -10,6 +10,10 @@
 #import "NSString+FontAwesome.h"
 
 @interface XGSIconCircularButton : UIButton
++ (instancetype)buttonWithTitle:(NSString *)title;
+@end
+
+@interface XGSIconCircularButton(FAIcon)
 + (instancetype)buttonWithIcon:(FAIcon)icon;
 @end
 

@@ -10,16 +10,20 @@
 
 @class XGSMarkdownTag;
 @class XGSMarkdownInputAccessoryView;
+@class XGSIconCircularButton;
 
 @protocol XGSMarkdownInputViewDelegate
 - (void)markdownInputViewDidDismiss:(XGSMarkdownInputAccessoryView *)inputView;
 - (void)markdownInputView:(XGSMarkdownInputAccessoryView *)inputView didSelectMarkdownElement:(XGSMarkdownTag *)element;
+- (void)markdownInputView:(XGSMarkdownInputAccessoryView *)inputView didSelectString:(NSString *)element;
 @end
 
 @interface XGSMarkdownInputAccessoryView : UIView
 
 @property (weak, nonatomic) id<XGSMarkdownInputViewDelegate> delegate;
-@property (nonatomic) NSArray *markdownTags;
+
+// shortcut buttons, either XGSMarkdownTag instances or NSString *
+@property (nonatomic) NSArray *shortcuts;
 
 @end
 

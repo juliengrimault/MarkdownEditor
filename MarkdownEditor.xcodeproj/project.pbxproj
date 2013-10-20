@@ -35,6 +35,7 @@
 		F9C8BAF51812D67C002BCCE7 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BAF41812D67C002BCCE7 /* UIFont+FontAwesome.m */; };
 		F9C8BAF81812D69E002BCCE7 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BAF71812D69E002BCCE7 /* NSString+FontAwesome.m */; };
 		F9C8BAFE1812EBC0002BCCE7 /* XGSMarkdownIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BAFD1812EBC0002BCCE7 /* XGSMarkdownIcon.m */; };
+		F9E690151813AB66009A8467 /* XGSMarkdownInsertionController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E690141813AB66009A8467 /* XGSMarkdownInsertionController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,8 @@
 		F9C8BAF71812D69E002BCCE7 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		F9C8BAFC1812EBC0002BCCE7 /* XGSMarkdownIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSMarkdownIcon.h; sourceTree = "<group>"; };
 		F9C8BAFD1812EBC0002BCCE7 /* XGSMarkdownIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSMarkdownIcon.m; sourceTree = "<group>"; };
+		F9E690131813AB66009A8467 /* XGSMarkdownInsertionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSMarkdownInsertionController.h; sourceTree = "<group>"; };
+		F9E690141813AB66009A8467 /* XGSMarkdownInsertionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSMarkdownInsertionController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +209,8 @@
 				F9AA4654180E0F59009B193A /* XGSAppDelegate.m */,
 				F9AA4657180E0F59009B193A /* XGSTextViewController.h */,
 				F9AA4658180E0F59009B193A /* XGSTextViewController.m */,
+				F9E690131813AB66009A8467 /* XGSMarkdownInsertionController.h */,
+				F9E690141813AB66009A8467 /* XGSMarkdownInsertionController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				F9AA4672180E0F70009B193A /* PSMenuItem.m in Sources */,
 				F9AA466C180E0F6B009B193A /* XGSMarkdownDefinition.m in Sources */,
 				F9317FCF180ED9780047195F /* NSDictionary+XGSMerge.m in Sources */,
+				F9E690151813AB66009A8467 /* XGSMarkdownInsertionController.m in Sources */,
 				F9AA466B180E0F6B009B193A /* XGSMarkdownTag.m in Sources */,
 				F9C8BAFE1812EBC0002BCCE7 /* XGSMarkdownIcon.m in Sources */,
 				F9AA465F180E0F63009B193A /* UIColor+AppColor.m in Sources */,
