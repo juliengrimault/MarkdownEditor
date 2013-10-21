@@ -1,36 +1,18 @@
 //
-//  XGSMarkdownButton.m
+//  XGSCircularCell.m
 //  MarkdownEditor
 //
 //  Created by Julien Grimault on 19/10/13.
 //  Copyright (c) 2013 XiaoGouSoftware. All rights reserved.
 //
 
-#import "XGSIconCircularButton.h"
-#import "UIFont+FontAwesome.h"
+#import "XGSCircularCell.h"
 
-@interface XGSIconCircularButton()
-@property (readonly, nonatomic) CAShapeLayer *shapeLayer;
+@interface XGSCircularCell()
+@property (readonly, nonatomic, strong) CAShapeLayer *shapeLayer;
 @end
 
-@implementation XGSIconCircularButton
-
-+ (Class) layerClass
-{
-    return [CAShapeLayer class];
-}
-
-- (CAShapeLayer *)shapeLayer
-{
-    return (CAShapeLayer *)self.layer;
-}
-
-+ (instancetype)buttonWithTitle:(NSString *)title
-{
-    XGSIconCircularButton *b = [[self alloc] initWithFrame:CGRectZero];
-    [b setTitle:title forState:UIControlStateNormal];
-    return b;
-}
+@implementation XGSCircularCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -43,8 +25,22 @@
 
 - (void)commonInit
 {
+    [self addTitleLabel];
+    [self addCircleShape];
     [self configureCircleLayer];
 }
+
+    - (void)addTitleLabel
+    {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [self.contentView addSubview:_titleLabel];
+    }
+
+    - (void)addCircleShape
+    {
+        _shapeLayer = [CAShapeLayer layer];
+        [self.contentView.layer addSublayer:_shapeLayer];
+    }
 
 - (void)tintColorDidChange
 {
@@ -54,6 +50,8 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    [self.titleLabel sizeToFit];
+    self.titleLabel.center = CGPointMake(self.contentView.bounds.size.width * 0.5f, self.contentView.bounds.size.height * 0.5f);
     [self configureCircleLayer];
 }
 
@@ -75,7 +73,7 @@
         self.shapeLayer.fillColor = self.highlighted ? [self.tintColor colorWithAlphaComponent:0.2].CGColor : [UIColor clearColor].CGColor;
         
         self.shapeLayer.strokeColor = self.tintColor.CGColor;
-        [self setTitleColor:self.tintColor forState:UIControlStateNormal];
+        self.titleLabel.textColor = self.tintColor;
         
         self.shapeLayer.lineWidth = 1;
     }
@@ -86,14 +84,15 @@
     [self configureCircleLayer];
 }
 
-@end
-
-@implementation XGSIconCircularButton(FAIcon)
-
-+ (instancetype)buttonWithIcon:(FAIcon)icon
+- (void)bindItem:(id<XGSCircularCellItem>)item
 {
-    XGSIconCircularButton *b = [self buttonWithTitle:[NSString fontAwesomeIconStringForEnum:icon]];
-    [b.titleLabel setFont:[UIFont fontAwesomeFontOfSize:15.0]];
-    return b;
+    if ([item respondsToSelector:@selector(displayFont)] && [item displayFont] != nil) {
+        self.titleLabel.font = [item displayFont];
+    } else {
+        self.titleLabel.font = [UIFont systemFontOfSize:17];
+    }
+
+    self.titleLabel.text = [item displayString];
 }
+
 @end

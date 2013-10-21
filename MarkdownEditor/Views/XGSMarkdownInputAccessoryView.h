@@ -23,7 +23,7 @@
 @property (weak, nonatomic) id<XGSMarkdownInputViewDelegate> delegate;
 
 // shortcut buttons, either XGSMarkdownTag instances or NSString *
-@property (nonatomic) NSArray *shortcuts;
+@property (nonatomic, copy) NSArray *shortcuts;
 
 @end
 

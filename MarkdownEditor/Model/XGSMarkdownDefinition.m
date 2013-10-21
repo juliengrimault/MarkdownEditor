@@ -10,6 +10,7 @@
 #import "XGSMarkdownTag.h"
 #import "XGSMarkdownTagBuilder.h"
 #import "UIColor+AppColor.h"
+#import "XGSShortcut.h"
 
 @implementation XGSMarkdownDefinition
 
@@ -23,6 +24,7 @@
     self = [super init];
     if (self) {
         [self computeTags];
+        [self computeAdditionalShortcuts];
     }
     return self;
 }
@@ -44,6 +46,13 @@
                       [builder mardownTagWithType:XGSMarkdownTagUnderlined],
                       [builder mardownTagWithType:XGSMarkdownTagHighlighted
                                        attributes:@{NSBackgroundColorAttributeName : [UIColor xgs_highlightColor]}]];
+}
+
+- (void)computeAdditionalShortcuts
+{
+    _additionalShortcuts = @[
+                             @"#", [[XGSShortcut alloc] initWithString:@"*" icon:FAIconAsterisk]
+                             ];
 }
 
 @end

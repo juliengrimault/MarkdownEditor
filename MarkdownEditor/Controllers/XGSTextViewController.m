@@ -30,11 +30,11 @@
     [PSMenuItem installMenuHandlerForObject:self];
 }
 
-- (id)initWithMarkupProcessor:(XGSMarkdownDefinition *)markupProcessor
+- (id)initWithMarkupProcessor:(XGSMarkdownDefinition *)markdownDefinition
 {
     self = [super init];
     if (self) {
-        _markupProcessor = markupProcessor;
+        _markdownDefinition = markdownDefinition;
         self.title = NSLocalizedString(@"Edit", nil);
     }
     return self;
@@ -50,7 +50,7 @@
 
     - (void)setupTextView
     {
-        self.textStorage = [[XGSHighlightTextStorage alloc] initWithTagStyles:self.markupProcessor.markdownTags normalFont:self.markupProcessor.normalFont];
+        self.textStorage = [[XGSHighlightTextStorage alloc] initWithTagStyles:self.markdownDefinition.markdownTags normalFont:self.markdownDefinition.normalFont];
         
         NSLayoutManager *layoutManager = [NSLayoutManager new];
         [self.textStorage addLayoutManager: layoutManager];
@@ -64,7 +64,7 @@
         [self.view addSubview:self.textView];
         
         XGSMarkdownInputAccessoryView *inputAccessoryView = [[XGSMarkdownInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
-        inputAccessoryView.shortcuts = self.markupProcessor.markdownTags;
+        inputAccessoryView.shortcuts = [self.markdownDefinition.markdownTags arrayByAddingObjectsFromArray:self.markdownDefinition.additionalShortcuts];
         inputAccessoryView.tintColor = [UIColor xgs_greenColor];
         inputAccessoryView.delegate = self.markdownInsertionController;
         textView.inputAccessoryView = inputAccessoryView;
@@ -73,7 +73,7 @@
     - (void)addCustomMenuItems
     {
         NSMutableArray *items = [NSMutableArray new];
-        for(XGSMarkdownTag *tag in self.markupProcessor.markdownTags) {
+        for(XGSMarkdownTag *tag in self.markdownDefinition.markdownTags) {
             [items addObject:[self menuItemForMarkdownTag:tag]];
         }
         [UIMenuController sharedMenuController].menuItems = items;

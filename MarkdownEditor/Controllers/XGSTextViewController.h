@@ -11,8 +11,8 @@
 @class XGSMarkdownInsertionController;
 @interface XGSTextViewController : UIViewController
 
-@property (strong, nonatomic, readonly) XGSMarkdownDefinition *markupProcessor;
+@property (strong, nonatomic, readonly) XGSMarkdownDefinition *markdownDefinition;
 @property (strong, nonatomic) XGSMarkdownInsertionController *markdownInsertionController;
 
-- (id)initWithMarkupProcessor:(XGSMarkdownDefinition *)markupProcessor;
+- (id)initWithMarkupProcessor:(XGSMarkdownDefinition *)markdownDefinition;
 @end
