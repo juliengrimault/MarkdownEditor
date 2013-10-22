@@ -57,7 +57,15 @@
     [self.textStorage insertAttributedString:insertBefore
                                      atIndex:selectedRange.location];
     
-    self.textView.selectedRange = NSMakeRange(NSMaxRange(selectedRange) + tag.pattern.length, 0);
+    if (selectedRange.length > 0)
+    {
+        self.textView.selectedRange = NSMakeRange(NSMaxRange(selectedRange) + tag.pattern.length, 0);
+    }
+    else
+    {
+        self.textView.selectedRange = NSMakeRange(selectedRange.location+ insertBefore.length, 0);
+    }
+
 }
 
     - (NSAttributedString *)endOfPattern:(XGSMarkdownTag *)tag
