@@ -9,6 +9,9 @@
 #import "XGSMarkdownInsertionController.h"
 #import "XGSMarkdownTag.h"
 
+using prefix XGS
+using prefix UI
+
 @interface XGSMarkdownInsertionController()
 @property (nonatomic, strong) NSTextStorage *textStorage;
 @property (nonatomic, strong) UITextView *textView;

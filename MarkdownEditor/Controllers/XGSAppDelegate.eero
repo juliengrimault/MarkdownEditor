@@ -1,0 +1,30 @@
+//
+//  XGSAppDelegate.m
+//  TextKitPlayground
+//
+//  Created by Julien Grimault on 11/10/13.
+//  Copyright (c) 2013 XiaoGouSoftware. All rights reserved.
+//
+
+#import "XGSAppDelegate.h"
+#import "XGSTextViewController.h"
+#import "XGSMarkdownDefinition.h"
+#import "UIColor+AppColor.h"
+
+using prefix UI
+using prefix XGS
+
+implementation XGSAppDelegate
+
+    application:Application, didFinishLaunchingWithOptions:Dictionary, return BOOL
+        self.window = Window.alloc.initWithFrame: Screen.mainScreen.bounds
+        self.window.tintColor = Color.xgs_greenColor
+        self.window.backgroundColor = Color.whiteColor
+        self.window.makeKeyAndVisible
+        
+        textVC := XGSTextViewController.alloc.initWithMarkupProcessor:XGSMarkdownDefinition.defaultInstance
+        nav := UINavigationController.alloc.initWithRootViewController:textVC
+        self.window.rootViewController = nav
+        return YES
+
+end

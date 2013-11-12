@@ -1,0 +1,145 @@
+//
+//  XGSTextViewController.m
+//  TextKitPlayground
+//
+//  Created by Julien Grimault on 11/10/13.
+//  Copyright (c) 2013 XiaoGouSoftware. All rights reserved.
+//
+
+#import "XGSTextViewController.h"
+#import "XGSHighlightTextStorage.h"
+#import "XGSMarkdownDefinition.h"
+#import "XGSMarkdownInputAccessoryView.h"
+#import "UIColor+AppColor.h"
+#import "XGSMarkdownTag.h"
+#import "PSMenuItem.h"
+#import "XGSMarkdownInsertionController.h"
+
+using prefix UI
+using prefix XGS
+
+interface XGSTextViewController ()
+    TextView textView {weak, nonatomic}
+    TextStorage textStorage {strong, nonatomic}
+    LayoutConstraint keyboardHeight {strong, nonatomic}
+
+    setupConstraints
+    setupTextView
+    addCustomMenuItems
+    startObservingKeyboardNotifications
+    keyboardWillShow:Notification notification
+    keyboardWillHide:Notification notification
+    stopObservingKeyboardNotifications
+end
+
+implementation XGSTextViewController
+
+    + load
+        PSMenuItem.installMenuHandlerForObject:self
+
+    + initialize
+        PSMenuItem.installMenuHandlerForObject:self;
+
+    initWithMarkupProcessor:MarkdownDefinition markdownDefinition, return instancetype
+        self = super.init
+        if self
+            _markdownDefinition = markdownDefinition;
+            self.title = NSLocalizedString(@"Edit", nil);
+        return self;
+
+    loadView
+        self.view = View.new
+        self.setupTextView
+        self.addCustomMenuItems
+
+    setupTextView
+        self.textStorage = XGSHighlightTextStorage.alloc.initWithTagStyles:self.markdownDefinition.markdownTags,
+                                                                normalFont:self.markdownDefinition.normalFont
+        
+        layoutManager := LayoutManager.new
+        self.textStorage.addLayoutManager: layoutManager
+        
+        textContainer := NSTextContainer.new
+        layoutManager.addTextContainer: textContainer
+        
+        textView := UITextView.alloc.initWithFrame:CGRectZero, textContainer:textContainer
+        textView.setTranslatesAutoresizingMaskIntoConstraints:NO
+        self.textView = textView
+        self.view.addSubview:self.textView
+        
+        inputAccessoryView := XGSMarkdownInputAccessoryView.alloc.initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)
+        inputAccessoryView.shortcuts = self.markdownDefinition.markdownTags.arrayByAddingObjectsFromArray:self.markdownDefinition.additionalShortcuts
+        inputAccessoryView.tintColor = UIColor.xgs_greenColor
+        inputAccessoryView.delegate = self.markdownInsertionController
+        textView.inputAccessoryView = inputAccessoryView
+
+    addCustomMenuItems
+        items := NSMutableArray.new
+        for MarkdownTag tag in self.markdownDefinition.markdownTags
+            item := PSMenuItem.alloc.initWithTitle:tag.name,
+                                             block:(|self.markdownInsertionController.insertMarkdownTag:tag)
+            items.addObject:item
+                  
+        MenuController.sharedMenuController.menuItems = items
+
+    viewDidLoad
+        super.viewDidLoad
+        self.setupConstraints
+        self.textView.text = NSLocalizedString(@"This is a demo of what you can do:\n1 * on each side of a word will make it *italic*.\n2 * on each side will make it **bold**.\n\n1 _ on each side of a word will _underline_ it\nYou can also =highlight stuff= by putting words between =.\n\nPretty cool no?",nil);
+        self.startObservingKeyboardNotifications
+
+    setupConstraints
+        editView := self.textView;
+        inputAccessoryView := self.textView.inputAccessoryView;
+        viewsDictionary := NSDictionaryOfVariableBindings(editView, inputAccessoryView);
+        self.view.addConstraints:
+         LayoutConstraint.constraintsWithVisualFormat: @"H:|[editView]|", options: NSLayoutFormatDirectionLeadingToTrailing, metrics: nil, views: viewsDictionary
+        
+        self.view.addConstraints:
+         LayoutConstraint.constraintsWithVisualFormat: @"V:|[editView]", options: NSLayoutFormatDirectionLeadingToTrailing, metrics: nil, views: viewsDictionary
+        
+        self.keyboardHeight = LayoutConstraint.constraintWithItem:editView,
+                                                        attribute:NSLayoutAttributeBottom,
+                                                        relatedBy:NSLayoutRelationEqual,
+                                                           toItem:self.view,
+                                                        attribute:NSLayoutAttributeBottom,
+                                                       multiplier:1.0f,
+                                                         constant:0
+        self.view.addConstraint:self.keyboardHeight
+    
+                  
+    markdownInsertionController, return MarkdownInsertionController
+        if _markdownInsertionController == nil
+            _markdownInsertionController = MarkdownInsertionController.alloc.initWithTextStorage:self.textStorage, textView:self.textView
+        return _markdownInsertionController;
+
+    startObservingKeyboardNotifications
+        NSNotificationCenter.defaultCenter.addObserver:self, selector:|keyboardWillShow:|,name:UIKeyboardWillChangeFrameNotification, object:nil
+        NSNotificationCenter.defaultCenter.addObserver:self, selector:|keyboardWillHide:|, name:UIKeyboardWillHideNotification, object:nil
+
+    keyboardWillShow:Notification notification
+        Dictionary info = notification.userInfo
+        NSTimeInterval animationDuration = info[UIKeyboardAnimationDurationUserInfoKey].doubleValue
+        CGRect keyboardFrame = info[UIKeyboardFrameEndUserInfoKey].CGRectValue
+        
+        BOOL isPortrait = UIDeviceOrientationIsPortrait((UIDeviceOrientation)Application.sharedApplication.statusBarOrientation)
+        CGFloat height = isPortrait ? keyboardFrame.size.height : keyboardFrame.size.width;
+        
+        self.keyboardHeight.constant = -height;
+        
+        UIView.animateWithDuration:animationDuration, animations:(|self.view.layoutIfNeeded)
+
+    keyboardWillHide:Notification notification
+        Dictionary info = notification.userInfo
+        NSTimeInterval animationDuration = info[UIKeyboardAnimationDurationUserInfoKey].doubleValue
+        
+        self.keyboardHeight.constant = 0;
+        UIView.animateWithDuration:animationDuration, animations:(|self.view.layoutIfNeeded)
+
+    dealloc
+        self.stopObservingKeyboardNotifications
+
+    stopObservingKeyboardNotifications
+        NotificationCenter.defaultCenter.removeObserver:self, name:UIKeyboardWillChangeFrameNotification, object:nil
+        NSNotificationCenter.defaultCenter.removeObserver:self, name:UIKeyboardWillHideNotification, object:nil
+end

@@ -21,8 +21,8 @@
 		F99DA5151807F84C00176BE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA4FD1807F84C00176BE7 /* UIKit.framework */; };
 		F99DA51D1807F84C00176BE7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F99DA51B1807F84C00176BE7 /* InfoPlist.strings */; };
 		F99DA51F1807F84C00176BE7 /* TextKitPlaygroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F99DA51E1807F84C00176BE7 /* TextKitPlaygroundTests.m */; };
-		F9AA4659180E0F59009B193A /* XGSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4654180E0F59009B193A /* XGSAppDelegate.m */; };
-		F9AA465B180E0F59009B193A /* XGSTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4658180E0F59009B193A /* XGSTextViewController.m */; };
+		F9AA4659180E0F59009B193A /* XGSAppDelegate.eero in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4654180E0F59009B193A /* XGSAppDelegate.eero */; };
+		F9AA465B180E0F59009B193A /* XGSTextViewController.eero in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4658180E0F59009B193A /* XGSTextViewController.eero */; };
 		F9AA465F180E0F63009B193A /* UIColor+AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA465E180E0F63009B193A /* UIColor+AppColor.m */; };
 		F9AA466A180E0F6B009B193A /* XGSHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4664180E0F6B009B193A /* XGSHighlightTextStorage.m */; };
 		F9AA466B180E0F6B009B193A /* XGSMarkdownTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4666180E0F6B009B193A /* XGSMarkdownTag.m */; };
@@ -35,7 +35,7 @@
 		F9C8BAF21812D5BB002BCCE7 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9C8BAF11812D5BA002BCCE7 /* fontawesome-webfont.ttf */; };
 		F9C8BAF51812D67C002BCCE7 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BAF41812D67C002BCCE7 /* UIFont+FontAwesome.m */; };
 		F9C8BAF81812D69E002BCCE7 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BAF71812D69E002BCCE7 /* NSString+FontAwesome.m */; };
-		F9E690151813AB66009A8467 /* XGSMarkdownInsertionController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E690141813AB66009A8467 /* XGSMarkdownInsertionController.m */; };
+		F9E690151813AB66009A8467 /* XGSMarkdownInsertionController.eero in Sources */ = {isa = PBXBuildFile; fileRef = F9E690141813AB66009A8467 /* XGSMarkdownInsertionController.eero */; };
 		F9FC05CF1815640500A83D79 /* XGSShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FC05CE1815640500A83D79 /* XGSShortcut.m */; };
 /* End PBXBuildFile section */
 
@@ -71,9 +71,9 @@
 		F99DA51C1807F84C00176BE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F99DA51E1807F84C00176BE7 /* TextKitPlaygroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextKitPlaygroundTests.m; sourceTree = "<group>"; };
 		F9AA4653180E0F59009B193A /* XGSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSAppDelegate.h; sourceTree = "<group>"; };
-		F9AA4654180E0F59009B193A /* XGSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSAppDelegate.m; sourceTree = "<group>"; };
+		F9AA4654180E0F59009B193A /* XGSAppDelegate.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = XGSAppDelegate.eero; sourceTree = "<group>"; };
 		F9AA4657180E0F59009B193A /* XGSTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSTextViewController.h; sourceTree = "<group>"; };
-		F9AA4658180E0F59009B193A /* XGSTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSTextViewController.m; sourceTree = "<group>"; };
+		F9AA4658180E0F59009B193A /* XGSTextViewController.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = XGSTextViewController.eero; sourceTree = "<group>"; };
 		F9AA465D180E0F63009B193A /* UIColor+AppColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColor.h"; sourceTree = "<group>"; };
 		F9AA465E180E0F63009B193A /* UIColor+AppColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColor.m"; sourceTree = "<group>"; };
 		F9AA4663180E0F6B009B193A /* XGSHighlightTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSHighlightTextStorage.h; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		F9C8BAF61812D69E002BCCE7 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
 		F9C8BAF71812D69E002BCCE7 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		F9E690131813AB66009A8467 /* XGSMarkdownInsertionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSMarkdownInsertionController.h; sourceTree = "<group>"; };
-		F9E690141813AB66009A8467 /* XGSMarkdownInsertionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSMarkdownInsertionController.m; sourceTree = "<group>"; };
+		F9E690141813AB66009A8467 /* XGSMarkdownInsertionController.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = XGSMarkdownInsertionController.eero; sourceTree = "<group>"; };
 		F9FC05CD1815640500A83D79 /* XGSShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSShortcut.h; sourceTree = "<group>"; };
 		F9FC05CE1815640500A83D79 /* XGSShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGSShortcut.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,11 +220,11 @@
 			isa = PBXGroup;
 			children = (
 				F9AA4653180E0F59009B193A /* XGSAppDelegate.h */,
-				F9AA4654180E0F59009B193A /* XGSAppDelegate.m */,
+				F9AA4654180E0F59009B193A /* XGSAppDelegate.eero */,
 				F9AA4657180E0F59009B193A /* XGSTextViewController.h */,
-				F9AA4658180E0F59009B193A /* XGSTextViewController.m */,
+				F9AA4658180E0F59009B193A /* XGSTextViewController.eero */,
 				F9E690131813AB66009A8467 /* XGSMarkdownInsertionController.h */,
-				F9E690141813AB66009A8467 /* XGSMarkdownInsertionController.m */,
+				F9E690141813AB66009A8467 /* XGSMarkdownInsertionController.eero */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -421,7 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9AA467B180E11DB009B193A /* XGSMarkdownTagTrait.m in Sources */,
-				F9AA465B180E0F59009B193A /* XGSTextViewController.m in Sources */,
+				F9AA465B180E0F59009B193A /* XGSTextViewController.eero in Sources */,
 				F9AA466A180E0F6B009B193A /* XGSHighlightTextStorage.m in Sources */,
 				F9FC05CF1815640500A83D79 /* XGSShortcut.m in Sources */,
 				F99DA5061807F84C00176BE7 /* main.m in Sources */,
@@ -431,13 +431,13 @@
 				F9AA4672180E0F70009B193A /* PSMenuItem.m in Sources */,
 				F9AA466C180E0F6B009B193A /* XGSMarkdownDefinition.m in Sources */,
 				F9317FCF180ED9780047195F /* NSDictionary+XGSMerge.m in Sources */,
-				F9E690151813AB66009A8467 /* XGSMarkdownInsertionController.m in Sources */,
+				F9E690151813AB66009A8467 /* XGSMarkdownInsertionController.eero in Sources */,
 				F9AA466B180E0F6B009B193A /* XGSMarkdownTag.m in Sources */,
 				F9AA465F180E0F63009B193A /* UIColor+AppColor.m in Sources */,
 				F9AA467E180E12FD009B193A /* XGSMarkdownTagBuilder.m in Sources */,
 				F9C8BAF51812D67C002BCCE7 /* UIFont+FontAwesome.m in Sources */,
 				F9AA4673180E0F70009B193A /* XGSMarkdownInputAccessoryView.m in Sources */,
-				F9AA4659180E0F59009B193A /* XGSAppDelegate.m in Sources */,
+				F9AA4659180E0F59009B193A /* XGSAppDelegate.eero in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
