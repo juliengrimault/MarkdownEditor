@@ -7,6 +7,6 @@ end
 
 target "MarkdownEditorTests" do
   pod 'Expecta',     '~> 0.2.3'   # expecta matchers
-  pod 'Specta',      '~> 0.1.11'  # specta bdd framework
+  pod 'Specta',      '~> 0.2.1'  # specta bdd framework
 end
 
